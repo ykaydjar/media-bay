@@ -110,7 +110,6 @@ export default function Menu(props){
                                     </InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl
-                                    inputRef={(ref) => signInForm.email = ref.value}
                                     type='email'
                                     placeholder="E-Mail"
                                     aria-label="E-Mail"
@@ -136,7 +135,6 @@ export default function Menu(props){
                                     </InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl
-                                    inputRef={(ref) => signInForm.password = ref.value}
                                     type='password'
                                     placeholder="Password"
                                     aria-label="Password"
@@ -194,7 +192,6 @@ export default function Menu(props){
                                     </InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl
-                                    inputRef={(ref) => signUpForm.email = ref.value}
                                     type='email'
                                     placeholder="E-Mail"
                                     aria-label="E-Mail"
@@ -220,7 +217,6 @@ export default function Menu(props){
                                     </InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl
-                                    inputRef={(ref) => signUpForm.password = ref.value}
                                     onChange={(e) => {
                                         console.log('rePassword field changed: ' + e.target.value);
                                     }}
@@ -249,7 +245,6 @@ export default function Menu(props){
                                     </InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl
-                                    inputRef={(ref) => signUpForm.rePassword = ref.value}
                                     type='password'
                                     placeholder="Password"
                                     aria-label="Password"

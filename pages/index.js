@@ -86,19 +86,25 @@ export default function Home(){
 
     }
 
+    const handleMenuDisplay = () => {
+        if(menuShown){
+            return <Menu menuPage={currentMenuPage} callback={menuCallback}/>
+        }else{
+            return null;
+        }
+    }
+
 
 
     return(
         <div style={{display: 'flex', flexDirection: 'column', width: '100vw'}}>
 
-            {menuShown?<Menu menuPage={currentMenuPage} callback={menuCallback}/>:null}
-
             <Header callback={headerCallback}/>
 
-            <div style={{width: '100%', height: '85%', display: menuShown?'none':'flex', flex: 1,  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
+            <div style={{width: '100%', height: '85%', minWidth: 360, display: menuShown?'none':'flex', flex: 1,  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
                 <TweenOne
                     key='left-block'
-                    style={{display: 'flex', flex: 1, paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 400, opacity: 0, width: '100%', height: 'auto', flexDirection: 'column', overflow: 'hidden', justifyContent: 'center', alignItems: 'center'}}
+                    style={{display: menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 360, opacity: 0, width: '100%', height: 'auto', flexDirection: 'column', overflow: 'hidden', justifyContent: 'center', alignItems: 'center'}}
                     animation={currentLeftBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {
@@ -151,7 +157,7 @@ export default function Home(){
                 </TweenOne>
 
                 <TweenOne
-                    style={{display: 'flex', flex: 1, flexWrap: 'wrap', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
+                    style={{display: menuShown ?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
                     animation={currentTopBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {
@@ -200,7 +206,7 @@ export default function Home(){
                 </TweenOne>
 
                 <TweenOne
-                    style={{display: 'flex', flex: 1, flexWrap: 'wrap', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
+                    style={{display: menuShown ?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
                     animation={currentTopBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {
@@ -287,9 +293,9 @@ export default function Home(){
                         </div>
                     </div>
                 </TweenOne>
-
-
             </div>
+
+            {handleMenuDisplay()}
 
         </div>
     )

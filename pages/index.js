@@ -1,209 +1,311 @@
-import Head from 'next/head'
+import React, {Component, useState} from "react";
+import Head from 'next/head';
+import {useRouter} from 'next/router';
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import Container from "react-bootstrap/Container";
+import Button from 'react-bootstrap/Button'
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import DropdownItem from "react-bootstrap/DropdownItem";
+import Nav from "react-bootstrap/Nav";
+import Toast from 'react-bootstrap/Toast';
 
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+import TweenOne from 'rc-tween-one';
+import PropTypes from 'prop-types';
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+import Header from '../src/components/Header/Header';
+import Footer from '../src/components/Footer/Footer';
+import Menu from '../src/components/Menu/Menu';
+import AuthMenu from "../src/components/AuthMenu/AuthMenu";
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+
+export default function Home(){
+
+    const topBlockInAnim = {
+        x: '0vw',
+        opacity: 1,
+        duration: 1000
+    }
+
+    const leftBlockInAnim = {
+        x: '0vw',
+        opacity: 1,
+        duration: 1000
+    }
+
+    const bottomBlockInAnim = {
+        y: '0vh',
+        opacity: 1,
+        duration: 1000
+    }
+
+    const [currentTopBlockAnim, setTopBlockAnim] = useState(topBlockInAnim);
+    const [currentLeftBlockAnim, setLeftBlockAnim] = useState(leftBlockInAnim);
+    const [currentBottomBlockAnim, setBottomBlockAnim] = useState(bottomBlockInAnim);
+
+    const [zkBoxShadow, setZkBoxShadow] = useState(null);
+    const [hdBoxShadow, setHdBoxShadow] = useState(null);
+
+    const [menuShown, showMenu] = useState(false);
+    const [currentMenuPage, setMenuPage] = useState('main');
+    const [authShown, showAuth] = useState(false);
+
+    const [animPaused, setAnimPause] = useState(false);
+
+    const router = useRouter();
+    console.log(JSON.stringify(router));
+
+    const menuCallback = (action, data) => {
+        console.log('Menu Callback: ' + action);
+        if(action === 'menu.close'){
+            showMenu(false);
+        }else if(action === 'menu.goAuth'){
+            setMenuPage('auth');
+        }
+    }
+
+    const headerCallback = (action, data) => {
+        console.log('Header Callback: ' + action);
+
+        if(action === 'menu.open'){
+            setMenuPage('main');
+            showMenu(true);
+        }else if(action === 'auth.open'){
+            setMenuPage('auth');
+            showMenu(true);
+        }
+    }
+
+    const authMenuCallback = (action, data) => {
+
+    }
+
+
+
+    return(
+        <div style={{display: 'flex', flexDirection: 'column', width: '100vw'}}>
+
+            {menuShown?<Menu menuPage={currentMenuPage} callback={menuCallback}/>:null}
+
+            <Header callback={headerCallback}/>
+
+            <div style={{width: '100%', height: '85%', display: menuShown?'none':'flex', flex: 1,  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
+                <TweenOne
+                    key='left-block'
+                    style={{display: 'flex', flex: 1, paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 400, opacity: 0, width: '100%', height: 'auto', flexDirection: 'column', overflow: 'hidden', justifyContent: 'center', alignItems: 'center'}}
+                    animation={currentLeftBlockAnim}
+                    paused={animPaused}
+                    onMouseEnter={() => {
+
+                    }}
+                    onMouseLeave={() => {
+                        setZkBoxShadow(null);
+                    }}
+                >
+                    <div style={{display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: 10, marginBottom: 10, overflow: 'hidden'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-start'}}>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/3.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/4.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
+                            </div>
+                        </div>
+                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-end'}}>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{display: 'flex', flexDirection: 'column', width: '65%', justifyContent: 'center', alignItems: 'center'}}>
+                            <span style={{textAlign: 'center', color: '#221f1f', fontSize: '.8em', fontStyle: 'italic'}}>Чем себя занять после тяжелых трудовых будней? Повседневная жизнь предлагает массу вариантов, но практически каждый человек на нашей планете любит просматривать любимые кинокартины. Теперь удобный и уникальный в своем роде кинотеатр для просмотра видео в комфортных для тебя условиях доступен и на телефоне!</span>
+
+                            <div style={{display: 'flex', width: '50%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.15em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
+
+                            <span style={{textAlign: 'center', color: '#b81d24', fontSize: '.9em', fontWeight: 'bold'}}>Предлагаем тебе прямо сейчас погрузиться в удивительно увлекательный мир - новинки кинопроката доступны всем пользователям круглосуточно!</span>
+                        </div>
+                    </div>
+                </TweenOne>
+
+                <TweenOne
+                    style={{display: 'flex', flex: 1, flexWrap: 'wrap', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
+                    animation={currentTopBlockAnim}
+                    paused={animPaused}
+                    onMouseEnter={() => {
+
+                    }}
+                    onMouseLeave={() => {
+                        setHdBoxShadow(null);
+                    }}
+                >
+                    <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', flexDirection: 'row', width: '100%', marginTop: 10, justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{display: 'flex', width: '50%', padding: 5, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}>
+
+                            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px grey inset', borderRadius: 10, padding: 5,}}>
+                                <img src={'hdrezka_logo.png'} style={{display: 'flex', width: '1.5em', height: '2em', filter: 'drop-shadow(0px 0px 2.5px #221f1f)'}}/>
+                                <a style={{fontWeight: 'bold', color: 'black', fontSize: '.9em', textAlign: 'center'}}>REZKA MOBILE</a>
+                            </div>
+                            <span style={{textAlign: 'center', fontWeight: 'bold', fontSize: '.8em', fontStyle: 'italic'}}>Все фильмы, сериалы и шоу в одном месте!</span>
+
+                            <div style={{display: 'flex', width: '85%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.1em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
+
+                            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                <div style={{display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                                    <FontAwesomeIcon
+                                        icon={['fas' , 'exclamation-triangle']}
+                                        style={{color: '#b81d24', fontSize: '.8em', margin: 5}}
+                                        onClick={() => {
+
+                                        }}
+                                        onMouseEnter={() => {
+
+                                        }}
+                                        onMouseLeave={() => {
+
+                                        }}
+                                    />
+
+                                    <span style={{color: '#b81d24', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Данное програмное обеспечение создано для ознакомительных целей. Автор не поддерживает пиратство.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{display: 'flex', flex: 1, flexDirection: 'column', width: '100%', marginTop: 10, justifyContent: 'flex-start', alignItems: 'flex-start', overflowX: 'hidden'}}>
+
+                    </div>
+                </TweenOne>
+
+                <TweenOne
+                    style={{display: 'flex', flex: 1, flexWrap: 'wrap', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
+                    animation={currentTopBlockAnim}
+                    paused={animPaused}
+                    onMouseEnter={() => {
+
+                    }}
+                    onMouseLeave={() => {
+                        setHdBoxShadow(null);
+                    }}
+                >
+                    <div style={{display: 'flex', width: '50%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
+                        <div style={{display: 'flex', width: '100%', flexShrink: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                            <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                                <span style={{color: '#8ab312', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Уже доступно</span>
+
+                                <FontAwesomeIcon
+                                    icon={['fas' , 'check']}
+                                    style={{color: '#8ab312', fontSize: '.5em', margin: 5}}
+                                    onClick={() => {
+
+                                    }}
+                                    onMouseEnter={() => {
+
+                                    }}
+                                    onMouseLeave={() => {
+
+                                    }}
+                                />
+                            </div>
+
+                            <div style={{display: 'flex', width: '15em', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
+                                <FontAwesomeIcon
+                                    icon={['fab' , 'android']}
+                                    style={{color: '#8ab312', fontSize: '1.5em', margin: 5}}
+                                    onClick={() => {
+
+                                    }}
+                                    onMouseEnter={() => {
+
+                                    }}
+                                    onMouseLeave={() => {
+
+                                    }}
+                                />
+
+                                <span style={{color: '#8ab312', fontSize: '.8em', fontWeight: 'bold', textAlign: 'right', fontStyle: 'italic'}}>Скачать на ANDROID</span>
+                            </div>
+                        </div>
+                        <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                            <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                                <span style={{color: '#3c3b3d', fontSize: '.65em' , textAlign: 'right', fontStyle: 'italic'}}>В разработке</span>
+
+                                <FontAwesomeIcon
+                                    icon={['fas' , 'star']}
+                                    style={{color: '#3c3b3d', fontSize: '.5em', margin: 5}}
+                                    onClick={() => {
+
+                                    }}
+                                    onMouseEnter={() => {
+
+                                    }}
+                                    onMouseLeave={() => {
+
+                                    }}
+                                />
+                            </div>
+
+                            <div style={{display: 'flex', width: '15em', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
+                                <FontAwesomeIcon
+                                    icon={['fab' , 'apple']}
+                                    style={{color: '#3c3b3d', fontSize: '1.5em', margin: 5}}
+                                    onClick={() => {
+
+                                    }}
+                                    onMouseEnter={() => {
+
+                                    }}
+                                    onMouseLeave={() => {
+
+                                    }}
+                                />
+
+                                <span style={{color: '#3c3b3d', fontSize: '1em' , fontWeight: 'bold', textAlign: 'left', fontStyle: 'italic'}}>Скачать на iOS</span>
+                            </div>
+                        </div>
+                    </div>
+                </TweenOne>
+
+
+            </div>
+
         </div>
-      </main>
+    )
+}
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+Home.propTypes = {
+    children: PropTypes.any,
+    className: PropTypes.string,
+    paused: PropTypes.bool
+};
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+export async function getStaticProps(){
+
+    return {
+        props: {
+            message: 'Hello World'
         }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+    }
 }

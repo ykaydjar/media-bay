@@ -1,0 +1,120 @@
+<div style={{width: '60%', height: '50%', borderRadius: 10, justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px grey inset'}}>
+                        <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                            <img src={'hdrezka_logo.png'} style={{display: 'flex', width: '10vw', height: '15vh', filter: 'drop-shadow(0px 0px 5px #4444dd)'}}/>
+
+                            <a style={{fontWeight: 'bold', fontSize: '2vh', color: 'black'}}>HDREZKA MOBILE</a>
+                            <div style={{display: 'flex', width: '75%', borderTopWidth: 1.5, borderTopColor: 'black', borderTopStyle: 'solid', margin: 5}}/>
+
+                        </div>
+                    </div>
+
+
+
+
+
+<div style={{display: 'flex', flexDirection: 'row', width: '100%',  alignItems: 'center'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', width: '50%'}}>
+
+                        </div>
+
+                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', alignItems: 'center', justifyContent: 'flex-end'}}>
+                            <a style={{fontWeight: 'bold', color: 'black', fonSize: '2.5vh', marginRight: 5}}>ZK MOBILE</a>
+                            <img src={'zk_logo.png'} style={{display: 'flex', width: '2.5vw', height: '3vh', filter: 'drop-shadow(0px 0px 2.5px #4444dd)'}}/>
+                        </div>
+                    </div>
+
+
+
+
+
+<div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                            <span style={{textAlign: 'center', color: '#221f1f', fontSize: '.8em', fontStyle: 'italic'}}>Чем себя занять после тяжелых трудовых будней? Повседневная жизнь предлагает массу вариантов, но практически каждый человек на нашей планете любит просматривать любимые кинокартины. Теперь удобный и уникальный в своем роде кинотеатр для просмотра видео в комфортных для тебя условиях доступен и на телефоне!</span>
+
+                            <div style={{display: 'flex', width: '50%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.15em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
+
+                            <span style={{textAlign: 'center', color: '#b81d24', fontSize: '1em', fontWeight: 'bold'}}>Предлагаем тебе прямо сейчас погрузиться в удивительно увлекательный мир - новинки кинопроката доступны всем пользователям круглосуточно!</span>
+                        </div>
+
+
+
+
+
+
+
+
+<div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
+                            <div style={{display: 'flex', width: '100%', flexShrink: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                                <div style={{display: 'flex', width: '45%', height: '100%', justifyContent: 'flex-end', alignItems: 'center'}}>
+                                    <span style={{color: '#8ab312', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Уже доступно</span>
+
+                                    <FontAwesomeIcon
+                                        icon={['fas' , 'check']}
+                                        style={{color: '#8ab312', fontSize: '.5em', margin: 5}}
+                                        onClick={() => {
+
+                                        }}
+                                        onMouseEnter={() => {
+
+                                        }}
+                                        onMouseLeave={() => {
+
+                                        }}
+                                    />
+                                </div>
+
+                                <div style={{display: 'flex', width: '55%', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
+                                    <FontAwesomeIcon
+                                        icon={['fab' , 'android']}
+                                        style={{color: '#8ab312', fontSize: '1.5em', margin: 5}}
+                                        onClick={() => {
+
+                                        }}
+                                        onMouseEnter={() => {
+
+                                        }}
+                                        onMouseLeave={() => {
+
+                                        }}
+                                    />
+
+                                    <span style={{color: '#8ab312', fontSize: '.8em', fontWeight: 'bold', textAlign: 'right', fontStyle: 'italic'}}>Скачать на ANDROID</span>
+                                </div>
+                            </div>
+                            <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                                <div style={{display: 'flex', width: '45%', height: '100%', justifyContent: 'flex-end', alignItems: 'center'}}>
+                                    <span style={{color: '#3c3b3d', fontSize: '.65em' , textAlign: 'right', fontStyle: 'italic'}}>В разработке</span>
+
+                                    <FontAwesomeIcon
+                                        icon={['fas' , 'star']}
+                                        style={{color: '#3c3b3d', fontSize: '.5em', margin: 5}}
+                                        onClick={() => {
+
+                                        }}
+                                        onMouseEnter={() => {
+
+                                        }}
+                                        onMouseLeave={() => {
+
+                                        }}
+                                    />
+                                </div>
+
+                                <div style={{display: 'flex', width: '55%', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
+                                    <FontAwesomeIcon
+                                        icon={['fab' , 'apple']}
+                                        style={{color: '#3c3b3d', fontSize: '1.5em', margin: 5}}
+                                        onClick={() => {
+
+                                        }}
+                                        onMouseEnter={() => {
+
+                                        }}
+                                        onMouseLeave={() => {
+
+                                        }}
+                                    />
+
+                                    <span style={{color: '#3c3b3d', fontSize: '1em' , fontWeight: 'bold', textAlign: 'left', fontStyle: 'italic'}}>Скачать на iOS</span>
+                                </div>
+                            </div>
+                        </div>

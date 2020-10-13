@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 
+
 import Container from "react-bootstrap/Container";
 import Button from 'react-bootstrap/Button'
 import Breadcrumb from "react-bootstrap/Breadcrumb";
@@ -20,10 +21,20 @@ import PropTypes from 'prop-types';
 
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {auth} from "../../../config/fire-config";
 
 
 export default function Menu(props){
+
+    const signUp = ({name, email, password}) => {
+        console.log('Signing up new user');
+        return auth.createUserWithEmailAndPassword(email, password).then(((response) => {
+            console.log(response);
+        })).catch((error) => {
+            return {error};
+        });
+    }
+
 
     const signInForm = {
         email: '',
@@ -256,7 +267,13 @@ export default function Menu(props){
                                 variant='success'
                                 style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
                                 onClick={() => {
-
+                                    return signUp({
+                                        name: 'test',
+                                        email: 'test@gmail.com',
+                                        password: 'TestTest'
+                                    }).then((user) => {
+                                        console.log(user);
+                                    });
                                 }}
                             >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
                         </div>

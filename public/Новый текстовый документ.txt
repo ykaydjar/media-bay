@@ -42,79 +42,40 @@
 
 
 
-<div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
-                            <div style={{display: 'flex', width: '100%', flexShrink: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                                <div style={{display: 'flex', width: '45%', height: '100%', justifyContent: 'flex-end', alignItems: 'center'}}>
-                                    <span style={{color: '#8ab312', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Уже доступно</span>
 
-                                    <FontAwesomeIcon
-                                        icon={['fas' , 'check']}
-                                        style={{color: '#8ab312', fontSize: '.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-                                </div>
-
-                                <div style={{display: 'flex', width: '55%', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
-                                    <FontAwesomeIcon
-                                        icon={['fab' , 'android']}
-                                        style={{color: '#8ab312', fontSize: '1.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-
-                                    <span style={{color: '#8ab312', fontSize: '.8em', fontWeight: 'bold', textAlign: 'right', fontStyle: 'italic'}}>Скачать на ANDROID</span>
-                                </div>
+<div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-start'}}>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
                             </div>
-                            <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                                <div style={{display: 'flex', width: '45%', height: '100%', justifyContent: 'flex-end', alignItems: 'center'}}>
-                                    <span style={{color: '#3c3b3d', fontSize: '.65em' , textAlign: 'right', fontStyle: 'italic'}}>В разработке</span>
-
-                                    <FontAwesomeIcon
-                                        icon={['fas' , 'star']}
-                                        style={{color: '#3c3b3d', fontSize: '.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-                                </div>
-
-                                <div style={{display: 'flex', width: '55%', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
-                                    <FontAwesomeIcon
-                                        icon={['fab' , 'apple']}
-                                        style={{color: '#3c3b3d', fontSize: '1.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-
-                                    <span style={{color: '#3c3b3d', fontSize: '1em' , fontWeight: 'bold', textAlign: 'left', fontStyle: 'italic'}}>Скачать на iOS</span>
-                                </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/3.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/4.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
                             </div>
                         </div>
+                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-end'}}>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
+                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+

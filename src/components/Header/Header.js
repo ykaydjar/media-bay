@@ -60,7 +60,7 @@ export default function Header(props) {
                 >
                     <FontAwesomeIcon
                         icon={['fas' , 'align-right']}
-                        style={{color: 'black', fontSize: '1.2em', filter: hoverFilter}}
+                        style={{color: 'black', fontSize: '1.2em', margin: 5, filter: hoverFilter}}
                         onClick={() => {
                             props.callback('menu.open');
                         }}
@@ -85,7 +85,7 @@ export default function Header(props) {
             >
                 <FontAwesomeIcon
                     icon={['fas' , 'sign-in-alt']}
-                    style={{color: 'black', fontSize: '1.4em', margin: 5, filter: hoverFilter}}
+                    style={{color: 'black', fontSize: '1.3em', margin: 5, filter: hoverFilter}}
                     onClick={() => {
                         props.callback('auth.open');
                     }}

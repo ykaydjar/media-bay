@@ -21,8 +21,7 @@ import Header from '../src/components/Header/Header';
 import Footer from '../src/components/Footer/Footer';
 import Menu from '../src/components/Menu/Menu';
 import AuthMenu from "../src/components/AuthMenu/AuthMenu";
-
-
+import {auth} from "../config/fire-config";
 
 
 export default function Home(){
@@ -97,14 +96,14 @@ export default function Home(){
 
 
     return(
-        <div style={{display: 'flex', flexDirection: 'column', width: '100vw'}}>
+        <div style={{display: 'flex', flexDirection: 'column', width: '100vw',}}>
 
             <Header callback={headerCallback}/>
 
-            <div style={{width: '100%', height: '85%', minWidth: 360, display: menuShown?'none':'flex', flex: 1,  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
+            <div style={{width: '100%', height: '85%', minWidth: 360, display: menuShown?'none':'flex',  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
                 <TweenOne
                     key='left-block'
-                    style={{display: menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 360, opacity: 0, width: '100%', height: 'auto', flexDirection: 'column', overflow: 'hidden', justifyContent: 'center', alignItems: 'center'}}
+                    style={{display: menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 360, opacity: 0, width: '80em',  height: '38em', flexDirection: 'column', overflowX: 'hidden', justifyContent: 'center', alignItems: 'center'}}
                     animation={currentLeftBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {
@@ -114,50 +113,33 @@ export default function Home(){
                         setZkBoxShadow(null);
                     }}
                 >
-                    <div style={{display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: 10, marginBottom: 10, overflow: 'hidden'}}>
-                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-start'}}>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/3.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/4.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
-                            </div>
-                        </div>
-                        <div style={{display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'flex-end'}}>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/1.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/2.jpg'} style={{display: 'flex', width: '100%', height: '100%'}}/>
-                            </div>
-                            <div style={{display: 'flex', width: '6.5em', height: '9em', flexShrink: 0, margin: 5, borderRadius: 5, overflow: 'hidden', boxShadow: '0px 0px 5px grey'}}>
-                                <img src={'/mediaPosters/5.jpg'} style={{display: 'flex', width: '100%', height: '100%', resizeMode: 'cover'}}/>
-                            </div>
-                        </div>
-                    </div>
+                    <img src={'/mediaPosters/bigboard.jpg'} style={{width: '100%', height: '100%', overflow: 'hidden'}}/>
 
-                    <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', width: '65%', justifyContent: 'center', alignItems: 'center'}}>
-                            <span style={{textAlign: 'center', color: '#221f1f', fontSize: '.8em', fontStyle: 'italic'}}>Чем себя занять после тяжелых трудовых будней? Повседневная жизнь предлагает массу вариантов, но практически каждый человек на нашей планете любит просматривать любимые кинокартины. Теперь удобный и уникальный в своем роде кинотеатр для просмотра видео в комфортных для тебя условиях доступен и на телефоне!</span>
-
-                            <div style={{display: 'flex', width: '50%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.15em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
-
-                            <span style={{textAlign: 'center', color: '#b81d24', fontSize: '.9em', fontWeight: 'bold'}}>Предлагаем тебе прямо сейчас погрузиться в удивительно увлекательный мир - новинки кинопроката доступны всем пользователям круглосуточно!</span>
-                        </div>
-                    </div>
                 </TweenOne>
 
+                <div
+                    style={{display: 'flex', width: '100%', height: '8em', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}
+                >
+                    <img src={'hdrezka_logo.png'} style={{display: 'flex', width: '5em', height: '5em', borderRadius: 100, boxShadow: '0px 0px 5px grey inset', filter: 'drop-shadow(0px 0px 5px #4444dd)'}}/>
+
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 5,}}>
+                        <a style={{fontWeight: 'bold', color: 'black', fontSize: '.9em', textAlign: 'center'}}>REZKA MOBILE</a>
+                    </div>
+                </div>
+
+                <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', width: '65%', justifyContent: 'center', alignItems: 'center'}}>
+                        <span style={{textAlign: 'center', color: '#221f1f', fontSize: '.8em', fontStyle: 'italic'}}>Чем себя занять после тяжелых трудовых будней? Повседневная жизнь предлагает массу вариантов, но практически каждый человек на нашей планете любит просматривать любимые кинокартины. Теперь удобный и уникальный в своем роде кинотеатр для просмотра видео в комфортных для тебя условиях доступен и на телефоне!</span>
+
+                        <div style={{display: 'flex', width: '50%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.15em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
+
+                        <span style={{textAlign: 'center', color: '#b81d24', fontSize: '.9em', fontWeight: 'bold'}}>Предлагаем тебе прямо сейчас погрузиться в удивительно увлекательный мир - новинки кинопроката доступны всем пользователям круглосуточно!</span>
+                    </div>
+                </div>
+
+
                 <TweenOne
-                    style={{display: menuShown ?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
+                    style={{display: menuShown ?'none':'flex', transform: 'translateX(100vw)', boxShadow: hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
                     animation={currentTopBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {
@@ -167,14 +149,8 @@ export default function Home(){
                         setHdBoxShadow(null);
                     }}
                 >
-                    <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', flexDirection: 'row', width: '100%', marginTop: 10, justifyContent: 'center', alignItems: 'center'}}>
+                    <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{display: 'flex', width: '50%', padding: 5, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}>
-
-                            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px grey inset', borderRadius: 10, padding: 5,}}>
-                                <img src={'hdrezka_logo.png'} style={{display: 'flex', width: '1.5em', height: '2em', filter: 'drop-shadow(0px 0px 2.5px #221f1f)'}}/>
-                                <a style={{fontWeight: 'bold', color: 'black', fontSize: '.9em', textAlign: 'center'}}>REZKA MOBILE</a>
-                            </div>
-                            <span style={{textAlign: 'center', fontWeight: 'bold', fontSize: '.8em', fontStyle: 'italic'}}>Все фильмы, сериалы и шоу в одном месте!</span>
 
                             <div style={{display: 'flex', width: '85%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.1em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
 
@@ -308,7 +284,7 @@ Home.propTypes = {
 };
 
 export async function getStaticProps(){
-
+   
     return {
         props: {
             message: 'Hello World'

@@ -376,7 +376,7 @@ export default function Menu(props){
                                     });
                                         });
                                             
-                            >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+}}>ЗАРЕГИСТРИРОВАТЬСЯ</Button>
                         </div>
                     </div>
 

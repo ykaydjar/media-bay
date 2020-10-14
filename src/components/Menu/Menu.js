@@ -70,22 +70,7 @@ export default function Menu(props){
             {menuPage === 'main'?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
         
-                    <FontAwesomeIcon
-                                            icon={['fas' , 'times']}
-                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
-                                            onClick={() => {
-                                                setAnim(menuOutAnim);
-                            setTimeout(() => {
-                                props.callback('menu.close');
-                            }, 1000)
-                                            }}
-                                            onMouseEnter={() => {
-
-                                            }}
-                                            onMouseLeave={() => {
-
-                                            }}
-                    />
+                  
                     
                     <a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
@@ -113,7 +98,7 @@ export default function Menu(props){
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                     
                     <FontAwesomeIcon
-                                            icon={['fas' , 'times']}
+                                            icon={['fas' , 'times-circle']}
                                             style={{color: 'white', fontSize: '.85em', margin: 5}}
                                             onClick={() => {
                                                 setAnim(menuOutAnim);
@@ -214,7 +199,7 @@ export default function Menu(props){
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                     
                     <FontAwesomeIcon
-                                            icon={['fas' , 'times']}
+                                            icon={['fas' , 'times-circle']}
                                             style={{color: 'white', fontSize: '.85em', margin: 5}}
                                             onClick={() => {
                                                 setAnim(menuOutAnim);

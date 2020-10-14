@@ -69,6 +69,24 @@ export default function Menu(props){
         >
             {menuPage === 'main'?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        
+                    <FontAwesomeIcon
+                                            icon={['fas' , 'times']}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
+                                            onClick={() => {
+                                                setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000)
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                    />
+                    
                     <a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
@@ -93,6 +111,23 @@ export default function Menu(props){
 
             {menuPage === 'auth'?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                    
+                    <FontAwesomeIcon
+                                            icon={['fas' , 'times']}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
+                                            onClick={() => {
+                                                setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000)
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                    />
 
                     <div style={{display: 'flex', width: '20em', margin: 10, flexDirection: 'column', borderRadius: 10, borderColor: 'white', borderStyle: 'solid', borderWidth: 1}}>
                         <div style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', height: '3em', marginBottom: 5, borderBottomWidth: 1, borderBottomColor: 'white', borderBottomStyle: 'solid'}}>
@@ -177,6 +212,23 @@ export default function Menu(props){
 
             {menuPage === 'reg' ?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                    
+                    <FontAwesomeIcon
+                                            icon={['fas' , 'times']}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
+                                            onClick={() => {
+                                                setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000)
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                    />
 
                     <div style={{display: 'flex', width: '20em', margin: 10, flexDirection: 'column', borderRadius: 10, borderColor: 'white', borderStyle: 'solid', borderWidth: 1}}>
                         <div style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', height: '3em', marginBottom: 5, borderBottomWidth: 1, borderBottomColor: 'white', borderBottomStyle: 'solid'}}>

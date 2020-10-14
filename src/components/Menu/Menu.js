@@ -25,6 +25,19 @@ import {auth} from "../../../config/fire-config";
 
 
 export default function Menu(props){
+    
+   const user = auth.currentUser;
+    
+    auth.onAuthStateChanged((user) => {
+        if(user){
+            setAuth(true);
+        }else{
+            setAuth(false);
+        }
+    })
+    
+    const [isAuth, setAuth] = useState(false);
+
 
     const signUp = ({name, email, password}) => {
         console.log('Signing up new user');
@@ -93,12 +106,22 @@ export default function Menu(props){
 
                     <div style={{display: 'flex', width: '25%', borderWidth: 1, borderColor: 'white', borderStyle: 'solid', margin: 10}}/>
 
+                    {user?<a
+                        style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
+                        onClick={() => {
+                            auth().signOut().then((response) => {
+                                    console.log(response);
+                                });
+                        }}
+                    >ВЫЙТИ</a>
+                    :
                     <a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
                             setMenuPage('auth');
                         }}
                     >ВОЙТИ</a>
+
                 </div>
                 :null
             }

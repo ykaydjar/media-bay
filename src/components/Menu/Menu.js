@@ -363,19 +363,19 @@ export default function Menu(props){
                                             email: 'test@gmail.com',
                                             password: 'TestTest'
                                         }).then((user) => {
-                                        signIn({
+                                            signIn({
                                       
-                                            email: 'test@gmail.com',
-                                            password: 'TestTest'
-                                        }).then((user) => {
-                                            console.log(user);
-                                            setAnim(menuOutAnim);
-                                            setTimeout(() => {
-                                                props.callback('menu.close');
-                                            }, 1000);
-                                                console.log(user);
-                                        });
+                                        email: 'test@gmail.com',
+                                        password: 'TestTest'
+                                    }).then((user) => {
+                                        console.log(user);
+                                        setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
                                     });
+                                        });
+                                            
                             >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
                         </div>
                     </div>

@@ -121,7 +121,7 @@ export default function Menu(props){
                             setMenuPage('auth');
                         }}
                     >ВОЙТИ</a>
-
+                    }
                 </div>
                 :null
             }

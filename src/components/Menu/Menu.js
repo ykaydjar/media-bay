@@ -359,23 +359,23 @@ export default function Menu(props){
                                 style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
                                 onClick={() => {
                                     return signUp({
-                                        name: 'test',
-                                        email: 'test@gmail.com',
-                                        password: 'TestTest'
-                                    }).then((user) => {
+                                            name: 'test',
+                                            email: 'test@gmail.com',
+                                            password: 'TestTest'
+                                        }).then((user) => {
                                         signIn({
                                       
-                                        email: 'test@gmail.com',
-                                        password: 'TestTest'
-                                    }).then((user) => {
-                                        console.log(user);
-                                        setAnim(menuOutAnim);
-                            setTimeout(() => {
-                                props.callback('menu.close');
-                            }, 1000);
-                                        console.log(user);
+                                            email: 'test@gmail.com',
+                                            password: 'TestTest'
+                                        }).then((user) => {
+                                            console.log(user);
+                                            setAnim(menuOutAnim);
+                                            setTimeout(() => {
+                                                props.callback('menu.close');
+                                            }, 1000);
+                                                console.log(user);
+                                        });
                                     });
-                                }}
                             >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
                         </div>
                     </div>

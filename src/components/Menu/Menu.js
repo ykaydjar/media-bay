@@ -34,6 +34,15 @@ export default function Menu(props){
             return {error};
         });
     }
+    
+    const signIn = ({email, password}) => {
+        console.log('Signning in user');
+        return auth..signInWithEmailAndPassword(email, password).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
 
 
     const signInForm = {
@@ -181,7 +190,19 @@ export default function Menu(props){
                                 }}
                             >Еще не зарегистрированы?</a>
 
-                            <Button variant='success' style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}>ВОЙТИ</Button>
+                            <Button 
+                                variant='success' 
+                                style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
+                                onClick={() => {
+                                    return signIn({
+                                      
+                                        email: 'test@gmail.com',
+                                        password: 'TestTest'
+                                    }).then((user) => {
+                                        console.log(user);
+                                    });
+                                }}
+                                >ВОЙТИ</Button>
                         </div>
                     </div>
 

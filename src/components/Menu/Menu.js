@@ -37,7 +37,7 @@ export default function Menu(props){
     
     const signIn = ({email, password}) => {
         console.log('Signning in user');
-        return auth..signInWithEmailAndPassword(email, password).then((response) => {
+        return auth.signInWithEmailAndPassword(email, password).then((response) => {
             console.log(response);
         }).catch((error) => {
             console.log(error);

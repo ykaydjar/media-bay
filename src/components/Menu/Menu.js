@@ -363,6 +363,12 @@ export default function Menu(props){
                                         email: 'test@gmail.com',
                                         password: 'TestTest'
                                     }).then((user) => {
+                                        signIn({
+                                      
+                                        email: 'test@gmail.com',
+                                        password: 'TestTest'
+                                    }).then((user) => {
+                                        console.log(user);
                                         setAnim(menuOutAnim);
                             setTimeout(() => {
                                 props.callback('menu.close');

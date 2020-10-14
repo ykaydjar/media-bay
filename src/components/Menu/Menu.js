@@ -111,7 +111,12 @@ export default function Menu(props){
                         onClick={() => {
                             auth.signOut().then((response) => {
                                     console.log(response);
+                                 setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
                                 });
+                            
                         }}
                     >ВЫЙТИ</a>
                     :
@@ -119,6 +124,7 @@ export default function Menu(props){
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
                             setMenuPage('auth');
+                             
                         }}
                     >ВОЙТИ</a>
                     }
@@ -223,6 +229,10 @@ export default function Menu(props){
                                         password: 'TestTest'
                                     }).then((user) => {
                                         console.log(user);
+                                        setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
                                     });
                                 }}
                                 >ВОЙТИ</Button>
@@ -353,6 +363,10 @@ export default function Menu(props){
                                         email: 'test@gmail.com',
                                         password: 'TestTest'
                                     }).then((user) => {
+                                        setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
                                         console.log(user);
                                     });
                                 }}

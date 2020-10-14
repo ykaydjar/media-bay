@@ -23,6 +23,15 @@ import {auth} from "../../../config/fire-config";
 export default function Header(props) {
     const user = auth.currentUser;
     
+    const [isAuth, setAuth] = useState(false);
+    auth.onAuthStateChanged((user) => {
+        if(user){
+            setAuth(true);
+        }else{
+            setAuth(false);
+        }
+    })
+    
     const headerInAnim = {
         y: '0vh',
         opacity: 1,

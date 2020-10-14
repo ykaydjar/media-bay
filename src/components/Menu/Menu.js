@@ -109,7 +109,7 @@ export default function Menu(props){
                     {user?<a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
-                            auth().signOut().then((response) => {
+                            auth.signOut().then((response) => {
                                     console.log(response);
                                 });
                         }}

@@ -99,7 +99,7 @@ export default function Menu(props){
                     
                     <FontAwesomeIcon
                                             icon={['fas' , 'times-circle']}
-                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5 cursor: 'pointer'}}
                                             onClick={() => {
                                                 setAnim(menuOutAnim);
                             setTimeout(() => {
@@ -200,7 +200,7 @@ export default function Menu(props){
                     
                     <FontAwesomeIcon
                                             icon={['fas' , 'times-circle']}
-                                            style={{color: 'white', fontSize: '.85em', margin: 5}}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5, cursor: 'pointer'}}
                                             onClick={() => {
                                                 setAnim(menuOutAnim);
                             setTimeout(() => {

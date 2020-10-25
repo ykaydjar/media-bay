@@ -23,6 +23,9 @@ import Menu from '../src/components/Menu/Menu';
 import AuthMenu from "../src/components/AuthMenu/AuthMenu";
 import {auth} from "../config/fire-config";
 
+import GameTest from "../src/components/Game/GameTest";
+
+
 
 export default function Home(){
 
@@ -97,6 +100,9 @@ export default function Home(){
 
     return(
         <div style={{display: 'flex', flexDirection: 'column', width: '100vw',}}>
+	   <Head>
+		<meta name="bm-site-verification" content="5jEbluSa1C5uta6aF_Bi3vjhrFRaAtBYZ7w9E6yD" />
+	   </Head>
 
             <Header callback={headerCallback}/>
 
@@ -271,6 +277,12 @@ export default function Home(){
                 </TweenOne>
             </div>
 
+            <div style={{display: 'flex', width: '100%'}}>
+                <GameTest/>
+            </div>
+
+
+
             {handleMenuDisplay()}
 
         </div>
@@ -284,6 +296,15 @@ Home.propTypes = {
 };
 
 export async function getStaticProps(){
+    /*
+    await fetch('https://www.dropbox.com/oauth2/authorize?client_id=gvzcavclr5e7wf9&response_type=code').then(async(response) => {
+        console.log(response);
+        await fetch('https://api.dropboxapi.com/oauth2/token').then((token) => {
+            console.log('Token: ' + JSON.stringify(token));
+        })
+    })
+
+     */
    
     return {
         props: {

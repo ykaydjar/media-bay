@@ -98,9 +98,11 @@ export default function Home(){
 
     return(
         <div style={{display: 'flex', flexDirection: 'column', width: '100vw',}}>
-	   <Head>
-		<meta name="bm-site-verification" content="5jEbluSa1C5uta6aF_Bi3vjhrFRaAtBYZ7w9E6yD" />
-	   </Head>
+	        <Head>
+                <meta name="bm-site-verification" content="5jEbluSa1C5uta6aF_Bi3vjhrFRaAtBYZ7w9E6yD" />
+                <title>MediaBay</title>
+                <link rel='icon' href='/hdrezka_logo.png'/>
+            </Head>
 
             <Header callback={headerCallback}/>
 

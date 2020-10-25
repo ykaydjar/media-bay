@@ -23,8 +23,6 @@ import Menu from '../src/components/Menu/Menu';
 import AuthMenu from "../src/components/AuthMenu/AuthMenu";
 import {auth} from "../config/fire-config";
 
-//import GameTest from "../src/components/Game/GameTest";
-
 
 
 export default function Home(){

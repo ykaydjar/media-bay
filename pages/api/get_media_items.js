@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import cheerio from 'cheerio';
 
-export async function getMediaItems(host='rezka.ag', topic='films', page='1', filter='last', limit='max'){
+export async function getMediaItems(host='rezka.ag', topic='films', page='1', filter='watching', limit='max'){
     let url = 'https://' + host + '/' + topic + '/page/' + page + '/?filter=' + filter;
     let mediaItemsResponse = [];
 

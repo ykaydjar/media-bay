@@ -33,7 +33,7 @@ export async function getItemsData(id, url){
         await getMovieTranslations(currentItem).then(async(itemData) => {
             currentItem = itemData;
             await getMovieData(currentItem.data.translations[0]).then((translation) => {
-                console.log('Movie Translations: ' + JSON.stringify(translation));
+                //console.log('Movie Translations: ' + JSON.stringify(translation));
                 currentItem.data.translations[0] = translation;
             })
         })
@@ -55,7 +55,7 @@ export async function getMovieTranslations(data){
             const $ = cheerio.load(text);
 
             let translationsCount = $('.b-translators__list').children('li').length;
-            console.log('Found ' + translationsCount + ' translations');
+            //console.log('Found ' + translationsCount + ' translations');
 
             itemData.data = {
                 translations: [],
@@ -92,11 +92,11 @@ export async function getMovieTranslations(data){
                 }
 
                 let postInfoLength = $('.b-post__info').children('tbody').children('tr').length;
-                console.log('Found ' + postInfoLength + ' post infos');
+                //console.log('Found ' + postInfoLength + ' post infos');
 
                 for(let i=1; i<=postInfoLength; i++){
                     let postInfoRow = $('.b-post__info').children('tbody').children('tr:nth-child('+ i +')').children('td:nth-child(1)').find('h2').text();
-                    console.log('Post Info Row: ' + postInfoRow);
+                    //console.log('Post Info Row: ' + postInfoRow);
                     if(postInfoRow === 'В переводе'){
                         translationObject.translationTitle = $('.b-post__info').children('tbody').children('tr:nth-child('+ i +')').children('td:nth-child(2)').text();
                     }

@@ -131,183 +131,25 @@ export default class Home extends Component{
 
                 <Header callback={this.headerCallback}/>
 
-                <div style={{width: '100%', height: '85%', minWidth: 360, display: this.state.menuShown?'none':'flex',  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
-                    <TweenOne
-                        key='left-block'
-                        style={{display: this.state.menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: this.state.zkBoxShadow, minWidth: 360, opacity: 0, width: '100vw',  height: '45vw', flexDirection: 'row', flexWrap: 'wrap', overflowX: 'hidden', justifyContent: 'center', alignItems: 'center'}}
-                        animation={this.state.currentLeftBlockAnim}
-                        paused={this.state.animPaused}
-                        onMouseEnter={() => {
+                <TweenOne
+                    key='left-block'
+                    style={{display: this.state.menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: this.state.zkBoxShadow, minWidth: 360, opacity: 0, width: '100vw',  height: '45vw', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
+                    animation={this.state.currentLeftBlockAnim}
+                    paused={this.state.animPaused}
+                    onMouseEnter={() => {
 
-                        }}
-                        onMouseLeave={() => {
-                            this.setState({
-                                zkBoxShadow: null,
-                            })
-                        }}
-                    >
-                        {this.props.mediaItems?this.props.mediaItems.map((item, index) =>
-                            <MediaFeedItem key={index} data={item}/>
-                        ):null}
-                    </TweenOne>
+                    }}
+                    onMouseLeave={() => {
+                        this.setState({
+                            zkBoxShadow: null,
+                        })
+                    }}
+                >
+                    {this.props.mediaItems?this.props.mediaItems.map((item, index) =>
+                        <MediaFeedItem key={index} data={item}/>
+                    ):null}
+                </TweenOne>
 
-                    <div
-                        style={{display: 'flex', width: '100%', height: '8em', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center'}}
-                    >
-                        <img src={'hdrezka_logo.png'} style={{display: 'flex', width: '5em', height: '5em', borderRadius: 100, boxShadow: '0px 0px 5px grey inset', filter: 'drop-shadow(0px 0px 5px #4444dd)'}}/>
-
-                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 5,}}>
-                            <a style={{fontWeight: 'bold', color: 'black', fontSize: '.9em', textAlign: 'center'}}>REZKA MOBILE</a>
-                        </div>
-                    </div>
-
-                    <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', width: '65%', justifyContent: 'center', alignItems: 'center'}}>
-                            <span style={{textAlign: 'center', color: '#221f1f', fontSize: '.8em', fontStyle: 'italic'}}>Чем себя занять после тяжелых трудовых будней? Повседневная жизнь предлагает массу вариантов, но практически каждый человек на нашей планете любит просматривать любимые кинокартины. Теперь удобный и уникальный в своем роде кинотеатр для просмотра видео в комфортных для тебя условиях доступен и на телефоне!</span>
-
-                            <div style={{display: 'flex', width: '50%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.15em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
-
-                            <span style={{textAlign: 'center', color: '#b81d24', fontSize: '.9em', fontWeight: 'bold'}}>Предлагаем тебе прямо сейчас погрузиться в удивительно увлекательный мир - новинки кинопроката доступны всем пользователям круглосуточно!</span>
-                        </div>
-                    </div>
-
-
-                    <TweenOne
-                        style={{display: this.state.menuShown ?'none':'flex', transform: 'translateX(100vw)', boxShadow: this.state.hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
-                        animation={this.state.currentTopBlockAnim}
-                        paused={this.state.animPaused}
-                        onMouseEnter={() => {
-
-                        }}
-                        onMouseLeave={() => {
-                            this.setState({
-                                hdBoxShadow: null
-                            })
-                        }}
-                    >
-                        <div style={{display: 'flex', flex: 1, flexWrap: 'wrap', flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                            <div style={{display: 'flex', width: '50%', padding: 5, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}>
-
-                                <div style={{display: 'flex', width: '85%', margin: 10, justifyContent: 'center', alignItems: 'center', borderTopWidth: '.1em', borderTopColor: '#b81d24', borderTopStyle: 'solid'}}/>
-
-                                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                                    <div style={{display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                                        <FontAwesomeIcon
-                                            icon={['fas' , 'exclamation-triangle']}
-                                            style={{color: '#b81d24', fontSize: '.8em', margin: 5}}
-                                            onClick={() => {
-
-                                            }}
-                                            onMouseEnter={() => {
-
-                                            }}
-                                            onMouseLeave={() => {
-
-                                            }}
-                                        />
-
-                                        <span style={{color: '#b81d24', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Данное програмное обеспечение создано для ознакомительных целей. Автор не поддерживает пиратство.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style={{display: 'flex', flex: 1, flexDirection: 'column', width: '100%', marginTop: 10, justifyContent: 'flex-start', alignItems: 'flex-start', overflowX: 'hidden'}}>
-
-                        </div>
-                    </TweenOne>
-
-                    <TweenOne
-                        style={{display: this.state.menuShown ?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(100vw)', boxShadow: this.state.hdBoxShadow, minWidth: 360, opacity: 0, flexDirection: 'column', width: '100%', height: 'auto', alignItems: 'center', justifyContent: 'center', overflowX: 'hidden'}}
-                        animation={this.state.currentTopBlockAnim}
-                        paused={this.state.animPaused}
-                        onMouseEnter={() => {
-
-                        }}
-                        onMouseLeave={() => {
-                            this.setState({
-                                hdBoxShadow: null
-                            })
-                        }}
-                    >
-                        <div style={{display: 'flex', width: '50%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
-                            <div style={{display: 'flex', width: '100%', flexShrink: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                                <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                                    <span style={{color: '#8ab312', fontSize: '.65em' , textAlign: 'left', fontStyle: 'italic'}}>Уже доступно</span>
-
-                                    <FontAwesomeIcon
-                                        icon={['fas' , 'check']}
-                                        style={{color: '#8ab312', fontSize: '.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-                                </div>
-
-                                <div style={{display: 'flex', width: '15em', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
-                                    <FontAwesomeIcon
-                                        icon={['fab' , 'android']}
-                                        style={{color: '#8ab312', fontSize: '1.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-
-                                    <span style={{color: '#8ab312', fontSize: '.8em', fontWeight: 'bold', textAlign: 'right', fontStyle: 'italic'}}>Скачать на ANDROID</span>
-                                </div>
-                            </div>
-                            <div style={{display: 'flex', width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                                <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                                    <span style={{color: '#3c3b3d', fontSize: '.65em' , textAlign: 'right', fontStyle: 'italic'}}>В разработке</span>
-
-                                    <FontAwesomeIcon
-                                        icon={['fas' , 'star']}
-                                        style={{color: '#3c3b3d', fontSize: '.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-                                </div>
-
-                                <div style={{display: 'flex', width: '15em', flexDirection: 'row', cursor: 'pointer', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 0px 5px 2px grey', borderRadius: 10}}>
-                                    <FontAwesomeIcon
-                                        icon={['fab' , 'apple']}
-                                        style={{color: '#3c3b3d', fontSize: '1.5em', margin: 5}}
-                                        onClick={() => {
-
-                                        }}
-                                        onMouseEnter={() => {
-
-                                        }}
-                                        onMouseLeave={() => {
-
-                                        }}
-                                    />
-
-                                    <span style={{color: '#3c3b3d', fontSize: '1em' , fontWeight: 'bold', textAlign: 'left', fontStyle: 'italic'}}>Скачать на iOS</span>
-                                </div>
-                            </div>
-                        </div>
-                    </TweenOne>
-                </div>
 
 
                 {this.handleMenuDisplay()}

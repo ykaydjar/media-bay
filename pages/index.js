@@ -277,11 +277,6 @@ export default function Home(){
                 </TweenOne>
             </div>
 
-            <div style={{display: 'flex', width: '100%'}}>
-                <GameTest/>
-            </div>
-
-
 
             {handleMenuDisplay()}
 

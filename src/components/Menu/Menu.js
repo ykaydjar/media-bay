@@ -25,6 +25,19 @@ import {auth} from "../../../config/fire-config";
 
 
 export default function Menu(props){
+    
+   const user = auth.currentUser;
+    
+    auth.onAuthStateChanged((user) => {
+        if(user){
+            setAuth(true);
+        }else{
+            setAuth(false);
+        }
+    })
+    
+    const [isAuth, setAuth] = useState(false);
+
 
     const signUp = ({name, email, password}) => {
         console.log('Signing up new user');
@@ -33,6 +46,15 @@ export default function Menu(props){
         })).catch((error) => {
             return {error};
         });
+    }
+    
+    const signIn = ({email, password}) => {
+        console.log('Signning in user');
+        return auth.signInWithEmailAndPassword(email, password).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
 
@@ -69,6 +91,9 @@ export default function Menu(props){
         >
             {menuPage === 'main'?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        
+                  
+                    
                     <a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
@@ -81,18 +106,51 @@ export default function Menu(props){
 
                     <div style={{display: 'flex', width: '25%', borderWidth: 1, borderColor: 'white', borderStyle: 'solid', margin: 10}}/>
 
+                    {user?<a
+                        style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
+                        onClick={() => {
+                            auth.signOut().then((response) => {
+                                    console.log(response);
+                                 setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
+                                });
+                            
+                        }}
+                    >ВЫЙТИ</a>
+                    :
                     <a
                         style={{fontWeight: 'bold', color: 'white', fontSize: '.8em', cursor: 'pointer'}}
                         onClick={() => {
                             setMenuPage('auth');
+                             
                         }}
                     >ВОЙТИ</a>
+                    }
                 </div>
                 :null
             }
 
             {menuPage === 'auth'?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                    
+                    <FontAwesomeIcon
+                                            icon={['fas' , 'times-circle']}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5, cursor: 'pointer'}}
+                                            onClick={() => {
+                                                setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000)
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                    />
 
                     <div style={{display: 'flex', width: '20em', margin: 10, flexDirection: 'column', borderRadius: 10, borderColor: 'white', borderStyle: 'solid', borderWidth: 1}}>
                         <div style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', height: '3em', marginBottom: 5, borderBottomWidth: 1, borderBottomColor: 'white', borderBottomStyle: 'solid'}}>
@@ -161,7 +219,23 @@ export default function Menu(props){
                                 }}
                             >Еще не зарегистрированы?</a>
 
-                            <Button variant='success' style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}>ВОЙТИ</Button>
+                            <Button 
+                                variant='success' 
+                                style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
+                                onClick={() => {
+                                    return signIn({
+                                      
+                                        email: 'test@gmail.com',
+                                        password: 'TestTest'
+                                    }).then((user) => {
+                                        console.log(user);
+                                        setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
+                                    });
+                                }}
+                                >ВОЙТИ</Button>
                         </div>
                     </div>
 
@@ -177,6 +251,23 @@ export default function Menu(props){
 
             {menuPage === 'reg' ?
                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                    
+                    <FontAwesomeIcon
+                                            icon={['fas' , 'times-circle']}
+                                            style={{color: 'white', fontSize: '.85em', margin: 5, cursor: 'pointer'}}
+                                            onClick={() => {
+                                                setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000)
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                    />
 
                     <div style={{display: 'flex', width: '20em', margin: 10, flexDirection: 'column', borderRadius: 10, borderColor: 'white', borderStyle: 'solid', borderWidth: 1}}>
                         <div style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', height: '3em', marginBottom: 5, borderBottomWidth: 1, borderBottomColor: 'white', borderBottomStyle: 'solid'}}>
@@ -268,14 +359,24 @@ export default function Menu(props){
                                 style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
                                 onClick={() => {
                                     return signUp({
-                                        name: 'test',
+                                            name: 'test',
+                                            email: 'test@gmail.com',
+                                            password: 'TestTest'
+                                        }).then((user) => {
+                                            signIn({
+                                      
                                         email: 'test@gmail.com',
                                         password: 'TestTest'
                                     }).then((user) => {
                                         console.log(user);
+                                        setAnim(menuOutAnim);
+                            setTimeout(() => {
+                                props.callback('menu.close');
+                            }, 1000);
                                     });
-                                }}
-                            >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+                                        });
+                                            
+}}>ЗАРЕГИСТРИРОВАТЬСЯ</Button>
                         </div>
                     </div>
 

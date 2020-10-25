@@ -17,7 +17,21 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import {auth} from "../../../config/fire-config";
+
+
 export default function Header(props) {
+    const user = auth.currentUser;
+    
+    const [isAuth, setAuth] = useState(false);
+    auth.onAuthStateChanged((user) => {
+        if(user){
+            setAuth(true);
+        }else{
+            setAuth(false);
+        }
+    })
+    
     const headerInAnim = {
         y: '0vh',
         opacity: 1,
@@ -83,7 +97,8 @@ export default function Header(props) {
             <div
                 style={{width: '37%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'row', cursor: 'pointer'}}
             >
-                <FontAwesomeIcon
+                {user?<a>{user.email}</a>:
+                    <FontAwesomeIcon
                     icon={['fas' , 'sign-in-alt']}
                     style={{color: 'black', fontSize: '1.3em', margin: 5, filter: hoverFilter}}
                     onClick={() => {
@@ -96,6 +111,8 @@ export default function Header(props) {
                         setFilter(null);
                     }}
                 />
+
+                }
             </div>
         </TweenOne>
     )

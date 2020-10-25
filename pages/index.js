@@ -109,7 +109,7 @@ export default function Home(){
             <div style={{width: '100%', height: '85%', minWidth: 360, display: menuShown?'none':'flex',  flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column',  marginBottom: 30, overflowX: 'hidden'}}>
                 <TweenOne
                     key='left-block'
-                    style={{display: menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 360, opacity: 0, width: '80em',  height: '38em', flexDirection: 'column', overflowX: 'hidden', justifyContent: 'center', alignItems: 'center'}}
+                    style={{display: menuShown?'none':'flex', paddingTop: 10, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: zkBoxShadow, minWidth: 360, opacity: 0, width: '100vw',  height: '45vw', flexDirection: 'column', overflowX: 'hidden', justifyContent: 'center', alignItems: 'center'}}
                     animation={currentLeftBlockAnim}
                     paused={animPaused}
                     onMouseEnter={() => {

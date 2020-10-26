@@ -1,41 +1,14 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import Link from 'next/link';
+import Layout from "../../src/components/layout";
+import {getMediaItems} from "../api/get_media_items";
+import TweenOne from "rc-tween-one";
+import MediaFeedItem from "../../src/components/MediaItems/MediaFeedItem";
 
-import {getMediaItems} from "./api/get_media_items";
-
-import MediaFeedItem from "../src/components/MediaItems/MediaFeedItem";
-
-import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/Button'
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import DropdownItem from "react-bootstrap/DropdownItem";
-import Nav from "react-bootstrap/Nav";
-import Toast from 'react-bootstrap/Toast';
-
-import TweenOne from 'rc-tween-one';
-import PropTypes from 'prop-types';
-
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Header from '../src/components/Header/Header';
-import Footer from '../src/components/Footer/Footer';
-import Menu from '../src/components/Menu/Menu';
-import AuthMenu from "../src/components/AuthMenu/AuthMenu";
-import {auth} from "../config/fire-config";
-import Layout from "../src/components/layout";
-
-
-
-
-export default class Home extends Component{
+export default class Films extends Component{
     constructor(props) {
         super(props);
-
 
         const topBlockInAnim = {
             x: '0vw',
@@ -55,7 +28,6 @@ export default class Home extends Component{
             duration: 1000
         }
 
-
         this.state = {
             mediaItems: this.props.mediaItems,
 
@@ -67,22 +39,15 @@ export default class Home extends Component{
 
             zkBoxShadow: null,
             hdBoxShadow: null,
-
         }
     }
-
-
-
-
-
-
 
     render() {
         return(
             <Layout style={{display: 'flex', flexDirection: 'column', width: '100vw'}} main={true}>
                 <Head>
                     <meta name="bm-site-verification" content="5jEbluSa1C5uta6aF_Bi3vjhrFRaAtBYZ7w9E6yD" />
-                    <title>MediaBay</title>
+                    <title>MediaBay / FILMS</title>
                     <link rel='icon' href='/hdrezka_logo.png'/>
                 </Head>
 
@@ -109,14 +74,15 @@ export default class Home extends Component{
             </Layout>
         )
     }
-}
 
+}
 
 export async function getStaticProps(){
     let mediaItems = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
 
     return {
         props: {
+            message: 'Hello World',
             mediaItems: mediaItems,
         }
     }

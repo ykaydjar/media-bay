@@ -7,6 +7,7 @@ import {getMediaItemsData} from "../api/get_media_items_data";
 import {FullScreen, useFullScreenHandle} from "react-full-screen";
 import ReactPlayer from "react-player";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {getMediaItems} from "../api/get_media_items";
 
 
 export default function Item(props){
@@ -14,7 +15,7 @@ export default function Item(props){
 
     const playerFullscreen = useFullScreenHandle();
     const [inFullscreen, setFullScreen] = useState(false);
-    const [isPlaying, setPlaying] = useState(true);
+    const [isPlaying, setPlaying] = useState(false);
 
     const [playerDimensions, setPlayerDimensions] = useState({width: '56em', height: '31.5em'});
 
@@ -22,6 +23,10 @@ export default function Item(props){
 
     const [loadedURL, setURL] = useState(null);
 
+
+    const loadMediaFiles = () => {
+
+    }
 
 
 
@@ -49,7 +54,7 @@ export default function Item(props){
                     }}
                 >
                     <ReactPlayer
-                        url={itemData.data.translations[0].mediaFiles[3].mediaUrl !== undefined?itemData.data.translations[0].mediaFiles[3].mediaUrl:null}
+                        url={loadedURL}
                         playing={isPlaying}
                         width={playerDimensions.width}
                         height={playerDimensions.height}
@@ -62,7 +67,7 @@ export default function Item(props){
                             }, 3000);
                         }}
                     />
-                    <div style={{position: 'absolute', display: uiShown?'flex':'none', flexDirection: 'column', width: playerDimensions.width, height: playerDimensions.height}}>
+                    <div style={{position: 'absolute', display: uiShown?'flex':'none', padding: 10, flexDirection: 'column', width: playerDimensions.width, height: playerDimensions.height}}>
                         <div style={{display: 'flex', flex: 1, width: '100%', alignItems: 'flex-start'}}>
                             <span style={{color: 'red', fontWeight: 'bold'}}>Media Title</span>
                         </div>
@@ -70,7 +75,7 @@ export default function Item(props){
                         <div style={{display: 'flex', flex: 4, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                             <FontAwesomeIcon
                                 icon={['fas' , 'backward']}
-                                style={{color: 'red', fontSize: '2em', margin: 30, cursor: 'pointer'}}
+                                style={{color: 'red', fontSize: '2em', margin: 50, cursor: 'pointer'}}
                                 onClick={() => {
 
                                 }}
@@ -78,7 +83,7 @@ export default function Item(props){
 
                             <FontAwesomeIcon
                                 icon={['fas' , isPlaying?'pause':'play']}
-                                style={{color: 'red', fontSize: '2em', margin: 30, cursor: 'pointer'}}
+                                style={{color: 'red', fontSize: '2em', margin: 50, cursor: 'pointer'}}
                                 onClick={() => {
                                     setPlaying(!isPlaying);
                                 }}
@@ -86,7 +91,7 @@ export default function Item(props){
 
                             <FontAwesomeIcon
                                 icon={['fas' , 'forward']}
-                                style={{color: 'red', fontSize: '2em', margin: 30, cursor: 'pointer'}}
+                                style={{color: 'red', fontSize: '2em', margin: 50, cursor: 'pointer'}}
                                 onClick={() => {
 
                                 }}
@@ -116,8 +121,18 @@ export default function Item(props){
 }
 
 export async function getStaticPaths(){
-    const paths = await getAllItemsIds();
-    console.log('Paths: ' + JSON.stringify(paths));
+
+    let items = await getMediaItems('rezka.ag', 'cartoons', '1', 'last', 'max');
+
+    const paths = items.map((item, index) => {
+        //console.log('Item: ' + JSON.stringify(item));
+        return {
+            params: {
+                id: item.id,
+            }
+        }
+    });
+
     return{
         paths: paths,
         fallback: false
@@ -126,13 +141,19 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({params}){
 
-    console.log('Get Static Props.params: ' + JSON.stringify(params));
+    let items = await getMediaItems('rezka.ag', 'cartoons', '1', 'last', 'max');
+    let currentItem = items.find(x => x.id === params.id);
 
-    const itemData = await getItemsData(params.id);
-    console.log('Get Static Props: ' + JSON.stringify(itemData));
+    await getMediaItemsData(currentItem.url).then(async (itemData) => {
+        currentItem.description = {
+            ...currentItem.description,
+            ...itemData.description,
+        };
+    });
+
     return {
         props: {
-            itemData: itemData
+            itemData: currentItem
         }
     }
 }

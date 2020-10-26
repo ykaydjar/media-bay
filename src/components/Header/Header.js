@@ -18,6 +18,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {auth} from "../../../config/fire-config";
+import Link from "next/link";
 
 
 export default function Header(props) {
@@ -54,7 +55,7 @@ export default function Header(props) {
 
     return(
         <TweenOne
-            style={{display: 'flex', flexDirection: 'row', transform: 'translateY(-100vh)', marginTop: 5, opacity: 0, overflow: 'hidden', paddingLeft: 10, paddingRight: 10, width: '100%', height: '5%', marginBottom: 10, borderBottomLeftRadius: 5, borderBottomRightRadius: 5}}
+            style={{display: 'flex', flexDirection: 'row', position: 'fixed', zIndex: 2, backgroundColor: 'white',  transform: 'translateY(-100vh)', paddingTop: 5, opacity: 0, overflow: 'hidden', paddingLeft: 10, paddingRight: 10, width: '100%', height: '5%', marginBottom: 10, borderBottomLeftRadius: 5, borderBottomRightRadius: 5}}
             animation={currentAnim}
             paused={animPaused}
         >
@@ -81,18 +82,20 @@ export default function Header(props) {
                     />
                 </TweenOne>
             </div>
-            <div style={{width: '25%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0px 0px 5px grey inset', borderRadius: 10}}>
-                <a
-                    style={{fontWeight: 'bold', fontSize: '1.8vh', color: 'black', filter: hoverFilter, padding: 5}}
-                    onMouseEnter={() => {
+            <div className={'header__title'} style={{width: '25%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: 10}}>
+                <Link href={'/'}>
+                    <a
+                        style={{fontWeight: 'bold', fontSize: '1.7vh', color: 'black', filter: hoverFilter, padding: 5}}
+                        onMouseEnter={() => {
 
-                    }}
-                    onMouseLeave={() => {
-                        setFilter(null);
-                    }}
-                >
-                    MEDIA BAY
-                </a>
+                        }}
+                        onMouseLeave={() => {
+                            setFilter(null);
+                        }}
+                    >
+                        MEDIA BAY
+                    </a>
+                </Link>
             </div>
             <div
                 style={{width: '37%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'row', cursor: 'pointer'}}

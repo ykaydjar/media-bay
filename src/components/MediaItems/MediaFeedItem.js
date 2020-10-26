@@ -8,14 +8,15 @@ export default class MediaFeedItem extends Component{
         super(props);
 
         this.state = {
-            data: this.props.data
+            data: this.props.data,
+            link: this.props.link
         }
     }
 
     render() {
         return(
             <div style={{display: 'flex', width: '8em', height: '12em', borderRadius: 5, margin: 10, overflow: 'hidden', boxShadow: '5px 5px 5px #09161c', cursor: 'pointer'}}>
-                <Link href={`/item/${this.props.data.id}`}>
+                <Link href={this.state.link}>
                     <a>
                         <img src={this.props.data.poster} style={{width: '100%', height: '100%', overflow: 'hidden'}}/>
                     </a>

@@ -85,7 +85,7 @@ export default function Menu(props){
 
     return(
         <TweenOne
-            style={{display: 'flex', overflow: 'hidden', zIndex: 1, position: 'absolute', width: '0vw', height: '100vh', backgroundColor: 'black', justifyContent: 'center', alignItems: 'center'}}
+            style={{display: 'flex', overflow: 'hidden', zIndex: 3, position: 'fixed', width: '0vw', height: '100vh', backgroundColor: 'black', justifyContent: 'center', alignItems: 'center'}}
             animation={currentAnim}
             paused={animPaused}
         >

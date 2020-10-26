@@ -223,7 +223,7 @@ export async function getStaticPaths(){
     }
 }
 
-export async function getStaticProps({params}){
+export async function getServerSideProps({params}){
 
     let items = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
     let currentItem = items.find(x => x.id === params.id);

@@ -82,7 +82,6 @@ export async function getStaticProps(){
 
     return {
         props: {
-            message: 'Hello World',
             mediaItems: mediaItems,
         }
     }

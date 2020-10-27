@@ -2,7 +2,6 @@ import React, {Component, useEffect, useState} from "react";
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
-import {getAllItemsIds, getItemsData} from "../../src/lib/items";
 import {getMediaItemsData, getMovieTranslations, getMovieData, getMediaItems} from "../../src/lib/media_quaries";
 
 import {FullScreen, useFullScreenHandle} from "react-full-screen";

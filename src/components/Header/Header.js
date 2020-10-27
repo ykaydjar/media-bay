@@ -73,13 +73,19 @@ export default function Header(props) {
 
                     }}
                 >
-                    <FontAwesomeIcon
-                        icon={['fas' , 'align-right']}
-                        style={{color: 'black', fontSize: '1.2em', margin: 5, filter: hoverFilter}}
-                        onClick={() => {
-                            props.callback('menu.open');
-                        }}
-                    />
+                    <div
+                        className='menu-button_container'
+                        style={{display: 'flex', width: '2em', height: '2em', justifyContent: 'center', alignItems: 'center', borderRadius: 100}}
+                    >
+                        <i
+                            className='ci-menu_alt_02'
+                            id='menu-button'
+                            style={{color: 'black', fontSize: '1.7em', fontWeight: 'bold', margin: 5}}
+                            onClick={() => {
+                                props.callback('menu.open');
+                            }}
+                        />
+                    </div>
                 </TweenOne>
             </div>
             <div className={'header__title'} style={{width: '25%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: 10}}>
@@ -101,20 +107,25 @@ export default function Header(props) {
                 style={{width: '37%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'row', cursor: 'pointer'}}
             >
                 {user?<a>{user.email}</a>:
-                    <FontAwesomeIcon
-                    icon={['fas' , 'sign-in-alt']}
-                    style={{color: 'black', fontSize: '1.3em', margin: 5, filter: hoverFilter}}
-                    onClick={() => {
-                        props.callback('auth.open');
-                    }}
-                    onMouseEnter={() => {
+                    <div
+                        className='menu-button_container'
+                        style={{display: 'flex', width: '2em', height: '2em', justifyContent: 'center', alignItems: 'center', borderRadius: 100}}
+                    >
+                        <i
+                            className='ci-user'
+                            id='user-button'
+                            style={{color: 'black', fontSize: '1.7em', fontWeight: 'bold', margin: 5}}
+                            onClick={() => {
+                                props.callback('auth.open');
+                            }}
+                            onMouseEnter={() => {
 
-                    }}
-                    onMouseLeave={() => {
-                        setFilter(null);
-                    }}
-                />
-
+                            }}
+                            onMouseLeave={() => {
+                                setFilter(null);
+                            }}
+                        />
+                    </div>
                 }
             </div>
         </TweenOne>

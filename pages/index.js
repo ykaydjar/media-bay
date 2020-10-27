@@ -3,7 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 
-import {getMediaItems} from "./api/get_media_items";
+import {getMediaItems} from "../src/lib/media_quaries";
 
 import MediaFeedItem from "../src/components/MediaItems/MediaFeedItem";
 
@@ -112,7 +112,7 @@ export default class Home extends Component{
 }
 
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
     let mediaItems = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
 
     return {

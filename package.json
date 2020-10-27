@@ -23,6 +23,7 @@
     "react-dom": "16.13.1",
     "react-full-screen": "^0.3.1",
     "react-player": "^2.6.2",
+    "swr": "^0.3.6",
     "tdweb": "^1.6.7"
   }
 }

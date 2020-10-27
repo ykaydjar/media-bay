@@ -2,7 +2,7 @@ import React, {Component, useEffect, useState} from "react";
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import Layout from "../../src/components/layout";
-import {getMediaItems} from "../api/get_media_items";
+import {getMediaItems} from "../../src/lib/media_quaries";
 import TweenOne from "rc-tween-one";
 import MediaFeedItem from "../../src/components/MediaItems/MediaFeedItem";
 

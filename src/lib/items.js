@@ -3,8 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import cheerio from 'cheerio';
 
-import {getMediaItems} from "../../pages/api/get_media_items";
-import {getMediaItemsData} from "../../pages/api/get_media_items_data";
+import {getMediaItems, getMediaItemsData} from "./media_quaries";
 
 export async function getAllItemsIds(){
     const items = await getMediaItems();

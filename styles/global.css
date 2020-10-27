@@ -24,6 +24,28 @@
     -ms-overflow-style: none;
 }
 
+#menu-button {
+    transition: text-shadow .5s;
+}
+#menu-button:hover {
+    text-shadow: -2px 2px 2px gray;
+}
+
+.menu-button_container {
+    transition: box-shadow .5s;
+}
+.menu-button_container:hover{
+    box-shadow: 0px 0px 3px 1px lightgray;
+}
+
+#user-button {
+    transition: text-shadow .5s;
+}
+#user-button:hover {
+    text-shadow: 2px 2px 2px gray;
+}
+
+
 a:hover {
     text-decoration: none;
 }

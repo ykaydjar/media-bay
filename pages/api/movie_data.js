@@ -1,15 +1,5 @@
-import React, {Component} from 'react';
-import cheerio from 'cheerio';
-
-export async function getMovieData(translationObject){
-    //media quality name can not be taken from file name in new video files as they are contain not quality name but random letters
-
-    let itemData = translationObject;
-    itemData.mediaFiles = [];
-
-
-    try{
-        await fetch("https://rezka.ag/ajax/get_cdn_series/", {
+export default async function MovieData (req, res){
+    res.status(200).json(await fetch("https://rezka.ag/ajax/get_cdn_series/", {
             "headers": {
                 "accept": "application/json, text/javascript, */*; q=0.01",
                 "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7,uk-UA;q=0.6,uk;q=0.5",
@@ -20,13 +10,15 @@ export async function getMovieData(translationObject){
                 "x-requested-with": "XMLHttpRequest"
             },
             "referrerPolicy": "no-referrer-when-downgrade",
-            "body": `id=${itemData.itemID}&translator_id=${itemData.translationID}&is_camrip=0&is_ads=0&is_director=0&action=get_movie`,
+            "body": `id=${req.query.itemID}&translator_id=${req.query.translationID}&is_camrip=0&is_ads=0&is_director=0&action=get_movie`,
             "method": "POST",
             "mode": "cors",
             "credentials": "include"
         }).then((response) => {
             return response.json();
         }).then((json) => {
+
+            let mediaFiles = [];
 
             let mediaString = json.url.toString();
 
@@ -73,15 +65,10 @@ export async function getMovieData(translationObject){
                     mediaUrl: mediaUrl,
                 }
 
-                itemData.mediaFiles.push(mediaObject);
+                mediaFiles.push(mediaObject);
 
                 //console.log('Quality object: ' + JSON.stringify(mediaObject));
             }
-        })
-    }catch(e){
-        console.log(e);
-    }
-
-
-    return itemData;
+            return mediaFiles;
+        }))
 }

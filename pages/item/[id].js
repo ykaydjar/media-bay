@@ -2,11 +2,18 @@ import React, {Component, useEffect, useState} from "react";
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
-import {getAllItemsIds, getItemsData, getMovieTranslations, getMovieData} from "../../src/lib/items";
-import {getMediaItemsData} from "../api/get_media_items_data";
+import {getAllItemsIds, getItemsData} from "../../src/lib/items";
+import {getMediaItemsData, getMovieTranslations, getMovieData, getMediaItems} from "../../src/lib/media_quaries";
+
 import {FullScreen, useFullScreenHandle} from "react-full-screen";
 import ReactPlayer from "react-player";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+import ProgressBar from "react-bootstrap/ProgressBar";
+import Spinner from "react-bootstrap/Spinner";
+import Layout from "../../src/components/layout";
+
+import useSWR from 'swr';
 
 
 export default function Item(props){

@@ -23,18 +23,9 @@ export async function getItemsData(id, url){
     let currentItem = items.find(x => x.id === id);
 
     console.log('Get Data Function.url: ' + currentItem.url);
-    await getMediaItemsData(currentItem.url).then(async (itemData) => {
-        currentItem.description = {
-            ...currentItem.description,
-            ...itemData.description,
-        }
-
-        await getMovieTranslations(currentItem).then(async(itemData) => {
-            currentItem = itemData;
-            await getMovieData(currentItem.data.translations[0]).then((translation) => {
-                //console.log('Movie Translations: ' + JSON.stringify(translation));
-                currentItem.data.translations[0] = translation;
-            })
+    await getMediaItemsData(currentItem).then(async (itemData) => {
+        await getMovieTranslations(itemData).then(async(translationData) => {
+            currentItem = translationData;
         })
     });
     //console.log('Get Data Function: ' + JSON.stringify(data));

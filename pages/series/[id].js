@@ -29,10 +29,6 @@ export default function Item(props){
     const [loadedURL, setURL] = useState(null);
 
 
-    const loadMediaFiles = () => {
-
-    }
-
 
 
 
@@ -149,11 +145,8 @@ export async function getStaticProps({params}){
     let items = await getMediaItems('rezka.ag', 'series', '1', 'last', 'max');
     let currentItem = items.find(x => x.id === params.id);
 
-    await getMediaItemsData(currentItem.url).then(async (itemData) => {
-        currentItem.description = {
-            ...currentItem.description,
-            ...itemData.description,
-        };
+    await getMediaItemsData(currentItem).then(async (itemData) => {
+        currentItem = itemData;
     });
 
     return {

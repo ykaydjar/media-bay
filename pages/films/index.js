@@ -77,7 +77,7 @@ export default class Films extends Component{
 
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
     let mediaItems = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
 
     return {

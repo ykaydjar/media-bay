@@ -56,7 +56,7 @@ export default function Item(props){
                     }}
                 >
                     <ReactPlayer
-                        url={itemData.data.translations[0].mediaFiles[3].mediaUrl !== undefined?itemData.data.translations[0].mediaFiles[3].mediaUrl:null}
+                        url={null}
                         playing={isPlaying}
                         width={playerDimensions.width}
                         height={playerDimensions.height}

@@ -81,3 +81,10 @@ a:hover {
 }
 
 
+
+
+.gameElement {
+    transition: rotate .5s;
+}
+
+

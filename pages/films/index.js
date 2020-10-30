@@ -82,7 +82,6 @@ export async function getServerSideProps(){
 
     return {
         props: {
-            message: 'Hello World',
             mediaItems: mediaItems,
         }
     }

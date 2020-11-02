@@ -27,17 +27,9 @@ export default class MediaItem extends Component{
 
         this.state = {
             itemData: this.props.itemData,
-            playerData: {
-                inFullscreen: false,
-                isPlaying: false,
-                uiShown: false,
-                loadedURL: null,
-                isLoading: false,
-                selectedTranslation: 0,
+            selectedTranslation: 0,
 
-                playbackPosition: 0,
-                playbackDuration:  0,
-            }
+            isLoading: false,
         }
     }
 
@@ -45,7 +37,7 @@ export default class MediaItem extends Component{
 
 
 
-
+/*
     loadMediaFiles = () => {
         while(this.state.itemData.data.translations[this.state.playerData.selectedTranslation].mediaFiles === null){
             return this.loadMediaFiles();
@@ -63,6 +55,8 @@ export default class MediaItem extends Component{
         });
     }
 
+ */
+
     mediaTranslationsProviderCallback = (action, data) => {
         if(action === 'translations.update_data'){
             this.setState({
@@ -77,7 +71,7 @@ export default class MediaItem extends Component{
 
     playerCallback = (action, data) => {
         if(action === 'player.load'){
-            return this.loadMediaFiles();
+            //return this.loadMediaFiles();
         }
     }
 
@@ -98,9 +92,9 @@ export default class MediaItem extends Component{
                     </div>
                 </div>
 
-                <VideoPlayer itemData={this.state.itemData} playerData={this.state.playerData} callback={this.playerCallback}/>
+                <VideoPlayerProvider itemData={this.state.itemData} selectedTranslation={this.state.selectedTranslation} callback={this.playerCallback}/>
 
-                <MediaTranslationProvider callback={this.mediaTranslationsProviderCallback} data={this.state.itemData} selectedTranslation={this.state.playerData.selectedTranslation} />
+                <MediaTranslationProvider callback={this.mediaTranslationsProviderCallback} data={this.state.itemData} selectedTranslation={this.state.selectedTranslation} />
             </Layout>
         )
     }

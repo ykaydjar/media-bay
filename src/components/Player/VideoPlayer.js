@@ -20,108 +20,55 @@ export default function VideoPlayer(props){
 
     const playerFullscreen = useFullScreenHandle();
 
-    const [playerData, setPlayerData] = useState(props.playerData);
+    const playerData = props.playerData;
 
-
-    const [playerDimensions, setPlayerDimensions] = useState({width: '70vw', height: '55vh'});
-
-
-    const playerUICallback = (action, data) => {
-        if(action === 'ui.update_player_state'){
-            let newPlayerData = {
-                ...playerData,
-                ...data
-            };
-            setPlayerData(newPlayerData);
-        }else if(action === 'ui.load_media_files'){
-            props.callback('player.load');
-        }else if(action === 'ui.fullscreen_exit'){
-            let newPlayerData = {
-                ...playerData,
-                inFullscreen: false,
-            };
-            setPlayerData(newPlayerData);
-            playerFullscreen.exit();
-        }else if(action === 'ui.fullscreen_enter'){
-            let newPlayerData = {
-                ...playerData,
-                inFullscreen: true
-            };
-            setPlayerData(newPlayerData);
-
-            playerFullscreen.enter();
-        }
-    }
     
 
 
 
     return(
         <div
-            style={{display: 'flex', width: playerDimensions.width, height: playerDimensions.height}}
+            style={{display: 'flex', width: props.playerDimensions.width, height: props.playerDimensions.height}}
         >
             <FullScreen
                 handle={playerFullscreen}
                 onChange={(inFullscreen) => {
                     if(inFullscreen){
-                        let newPlayerData = {
-                            ...playerData,
-                            inFullscreen: true
-                        };
-                        setPlayerData(newPlayerData);
-                        setPlayerDimensions({width: '100%', height: '100%'});
+                        props.callback('player.update_player_state', {inFullscreen: true});
+                        props.callback('player.update_player_dimensions', {width: '100%', height: '100%'});
                     }else{
-                        let newPlayerData = {
-                            ...playerData,
-                            inFullscreen: false
-                        };
-                        setPlayerData(newPlayerData);
-                        setPlayerDimensions({width: '70vw', height: '55vh'});
+                        props.callback('player.update_player_state', {inFullscreen: false});
+                        props.callback('player.update_player_dimensions', {width: '70vw', height: '55vh'});
                     }
                 }}
             >
                 <ReactPlayer
                     url={playerData.loadedURL}
                     playing={playerData.isPlaying}
-                    width={playerDimensions.width}
-                    height={playerDimensions.height}
+                    width={props.playerDimensions.width}
+                    height={props.playerDimensions.height}
                     style={{position: 'absolute', backgroundColor: 'black'}}
                     onProgress={(progress) => {
-                        let newPlayerData = {
-                            ...playerData,
-                            playbackPosition: progress.playedSeconds
-                        }
-                        setPlayerData(newPlayerData);
+                        props.callback('player.update_progress', {playbackPosition: progress.playedSeconds});
                     }}
                     onDuration={(duration) => {
-                        let newPlayerData = {
-                            ...playerData,
-                            playbackDuration: duration
-                        }
-                        setPlayerData(newPlayerData);
+                        props.callback('player.update_progress', {playbackDuration: duration});
                     }}
                     onError={(error) => {
                         console.log(error);
                     }}
-                    onMouseEnter={() => {
-                        console.log('Mouse Entered');
-                        let newPlayerData = {
-                            ...playerData,
-                            uiShown: true
-                        };
-                        setPlayerData(newPlayerData);
 
-                        setTimeout(() => {
-                            let newPlayerData = {
-                                ...playerData,
-                                uiShown: false
-                            };
-                            setPlayerData(newPlayerData);
-                        }, 3000);
+                    onMouseEnter={() => {
+                        console.log('Mouse is over...');
+                        clearTimeout(uiTimeout);
+
+                        props.callback('ui.show');
+
+                        let uiTimeout = setTimeout(() => {
+                            props.callback('ui.hide');
+                        }, 5000);
                     }}
                 />
-
-                <VideoPlayerUI playerData={playerData} itemData={props.itemData} playerDimensions={playerDimensions} callback={playerUICallback}/>
             </FullScreen>
         </div>
     )

@@ -23,7 +23,11 @@ export default class VideoPlayerUI extends Component{
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return this.props.playerData.uiShown !== nextProps.playerData.uiShown;
+        if(this.props.playerData.uiShown === true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     render() {

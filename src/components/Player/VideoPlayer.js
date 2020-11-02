@@ -23,7 +23,7 @@ export default function VideoPlayer(props){
     const playerData = props.playerData;
 
     
-
+    //make ReactPlayer to be a class component so we can use refs, and wrap it width VideoPlayer Component and Fullscreen Component so we can use fullscreen
 
 
     return(
@@ -60,7 +60,7 @@ export default function VideoPlayer(props){
 
                     onMouseEnter={() => {
                         console.log('Mouse is over...');
-                        clearTimeout(uiTimeout);
+                        //clearTimeout(uiTimeout);
 
                         props.callback('ui.show');
 

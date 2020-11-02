@@ -60,7 +60,6 @@ export default function VideoPlayer(props){
 
                     onMouseEnter={() => {
                         console.log('Mouse is over...');
-                        //clearTimeout(uiTimeout);
 
                         props.callback('ui.show');
 

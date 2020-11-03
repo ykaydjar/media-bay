@@ -38,7 +38,7 @@ export default function VideoPlayer(props){
                         props.callback('player.update_player_dimensions', {width: '100%', height: '100%'});
                     }else{
                         props.callback('player.update_player_state', {inFullscreen: false});
-                        props.callback('player.update_player_dimensions', {width: '70vw', height: '55vh'});
+                        props.callback('player.update_player_dimensions', {width: '60vw', height: '55vh'});
                     }
                 }}
             >
@@ -60,6 +60,15 @@ export default function VideoPlayer(props){
 
                     onMouseEnter={() => {
                         console.log('Mouse is over...');
+
+                        props.callback('ui.show');
+
+                        let uiTimeout = setTimeout(() => {
+                            props.callback('ui.hide');
+                        }, 5000);
+                    }}
+                    onTouchEnd={() => {
+                        console.log('Oh, you touch my tralala...');
 
                         props.callback('ui.show');
 

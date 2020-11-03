@@ -35,7 +35,7 @@ export default class VideoPlayerProvider extends Component{
             },
 
             playerDimensions: {
-                width: '70vw',
+                width: '60vw',
                 height: '55vh'
             }
         }

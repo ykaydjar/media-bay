@@ -21,6 +21,7 @@ import VideoPlayerProvider from "../../src/components/Player/VideoPlayerProvider
 
 
 
+
 export default class MediaItem extends Component{
     constructor(props) {
         super(props);
@@ -82,19 +83,31 @@ export default class MediaItem extends Component{
     render() {
         return(
             <Layout style={{display: 'flex', flexDirection: 'column'}} main={false}>
-                <div style={{display: 'flex', flexDirection: 'row', width: '100vw', paddingTop: 50}}>
-                    <div style={{display: 'flex', flexDirection: 'column', flex: 1, minHeight: '3em', justifyContent: 'center', alignItems: 'center'}}>
-                        <h1 style={{color: 'black', fontSize: '2em', fontWeight: 'bold'}}>{this.state.itemData.description?this.state.itemData.description.nameOriginal:null}</h1>
-                        <span style={{color: 'black', fontSize: '.8em', fontWeight: 'bold'}}>{this.state.itemData.description?this.state.itemData.description.subtext:null}</span>
+                <div style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', marginTop: 80}}>
+                    <div style={{display: 'flex', flexDirection: 'column', width: '50%', height: 'auto', minWidth: 360, justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{display: 'flex', flexDirection: 'column', width: '50%', height: 'auto', justifyContent: 'center', alignItems: 'center'}}>
+                            <h1 style={{color: 'black', fontSize: '1.5em', fontWeight: 'bold', textAlign: 'center', textShadow: '5px 5px 5px gray'}}>{this.state.itemData.description?this.state.itemData.description.name:null}</h1>
+                            <span style={{color: 'black', fontSize: '1em', fontWeight: 'bold', textAlign: 'center'}}>{this.state.itemData.description?this.state.itemData.description.nameOriginal:null}</span>
+                            <span style={{color: 'black', fontSize: '.8em', fontWeight: 'bold', textAlign: 'center'}}>{this.state.itemData.description?this.state.itemData.description.subtext:null}</span>
+                        </div>
+                        <span style={{color: 'black', marginTop: 20, fontSize: '.9em', fontWeight: 'bold', textAlign: 'center'}}>{this.state.itemData.description?this.state.itemData.description.about:null}</span>
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column', flex: 1, minHeight: '3em', justifyContent: 'center', alignItems: 'center'}}>
-                        <span style={{color: 'black', fontSize: '.8em', fontWeight: 'bold'}}>{this.state.itemData.description?this.state.itemData.description.about:null}</span>
+                    <div style={{display: 'flex', flexDirection: 'row', marginLeft: 10, marginTop: 20, width: 'auto', height: 'auto', justifyContent: 'flex-end', alignItems: 'center'}}>
+                        <img src={this.state.itemData.poster} style={{width: '25em', height: '35em', borderRadius: 10, filter: 'blur(.5px)', boxShadow: '0px 0px 10px 5px gray'}}/>
                     </div>
                 </div>
 
-                <VideoPlayerProvider itemData={this.state.itemData} selectedTranslation={this.state.selectedTranslation} callback={this.playerCallback}/>
-
-                <MediaTranslationProvider callback={this.mediaTranslationsProviderCallback} data={this.state.itemData} selectedTranslation={this.state.selectedTranslation} />
+                <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', minWidth: 360, flexWrap: 'wrap', marginTop: 20, marginBottom: 20}}>
+                    <div style={{display: 'flex', flexGrow: 1, minWidth: '60%', height: '100%', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                        <VideoPlayerProvider itemData={this.state.itemData} selectedTranslation={this.state.selectedTranslation} callback={this.playerCallback}/>
+                        <MediaTranslationProvider callback={this.mediaTranslationsProviderCallback} data={this.state.itemData} selectedTranslation={this.state.selectedTranslation} />
+                    </div>
+                    <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '40%', height: '100%', minWidth: 360, justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
+                        <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
+                        <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
+                    </div>
+                </div>
             </Layout>
         )
     }

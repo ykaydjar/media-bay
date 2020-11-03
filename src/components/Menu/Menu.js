@@ -162,7 +162,9 @@ export default function Menu(props){
                                 className="mb-3" style={{display: 'flex', width: '97%'}}
                             >
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text id="basic-addon1">
+                                    <InputGroup.Text
+                                        id="basic-addon1"
+                                    >
                                         <FontAwesomeIcon
                                             icon={['fas' , 'at']}
                                             style={{color: '#8ab312', fontSize: '.85em', margin: 5}}

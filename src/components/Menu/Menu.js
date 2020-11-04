@@ -83,6 +83,12 @@ export default function Menu(props){
 
     const [menuPage, setMenuPage] = useState(props.menuPage);
 
+    let formData = {
+        emailData: null,
+        passwordData: null,
+        rePassData: null,
+    }
+
     return(
         <TweenOne
             style={{display: 'flex', overflow: 'hidden', zIndex: 3, position: 'fixed', width: '0vw', height: '100vh', backgroundColor: 'black', justifyContent: 'center', alignItems: 'center'}}
@@ -185,6 +191,9 @@ export default function Menu(props){
                                     placeholder="E-Mail"
                                     aria-label="E-Mail"
                                     aria-describedby="basic-addon1"
+                                    onChange={(event) => {
+                                        formData.emailData = event.target.value;
+                                    }}
                                 />
                             </InputGroup>
                             <InputGroup className="mb-3" style={{display: 'flex', width: '97%'}}>
@@ -210,6 +219,9 @@ export default function Menu(props){
                                     placeholder="Password"
                                     aria-label="Password"
                                     aria-describedby="basic-addon1"
+                                    onChange={(event) => {
+                                        formData.passwordData = event.target.value;
+                                    }}
                                 />
                             </InputGroup>
 
@@ -227,8 +239,8 @@ export default function Menu(props){
                                 onClick={() => {
                                     return signIn({
                                       
-                                        email: 'test@gmail.com',
-                                        password: 'TestTest'
+                                        email: formData.emailData,
+                                        password: formData.passwordData
                                     }).then((user) => {
                                         console.log(user);
                                         setAnim(menuOutAnim);
@@ -300,34 +312,9 @@ export default function Menu(props){
                                     placeholder="E-Mail"
                                     aria-label="E-Mail"
                                     aria-describedby="basic-addon1"
-                                />
-                            </InputGroup>
-                            <InputGroup className="mb-3" style={{display: 'flex', width: '97%'}}>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="basic-addon1">
-                                        <FontAwesomeIcon
-                                            icon={['fas' , 'lock']}
-                                            style={{color: '#8ab312', fontSize: '.85em', margin: 5}}
-                                            onClick={() => {
-
-                                            }}
-                                            onMouseEnter={() => {
-
-                                            }}
-                                            onMouseLeave={() => {
-
-                                            }}
-                                        />
-                                    </InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <FormControl
-                                    onChange={(e) => {
-                                        console.log('rePassword field changed: ' + e.target.value);
+                                    onChange={(event) => {
+                                        formData.emailData = event.target.value;
                                     }}
-                                    type='password'
-                                    placeholder="Password"
-                                    aria-label="Password"
-                                    aria-describedby="basic-addon1"
                                 />
                             </InputGroup>
                             <InputGroup className="mb-3" style={{display: 'flex', width: '97%'}}>
@@ -353,6 +340,37 @@ export default function Menu(props){
                                     placeholder="Password"
                                     aria-label="Password"
                                     aria-describedby="basic-addon1"
+                                    onChange={(event) => {
+                                        formData.passwordData = event.target.value;
+                                    }}
+                                />
+                            </InputGroup>
+                            <InputGroup className="mb-3" style={{display: 'flex', width: '97%'}}>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text id="basic-addon1">
+                                        <FontAwesomeIcon
+                                            icon={['fas' , 'lock']}
+                                            style={{color: '#8ab312', fontSize: '.85em', margin: 5}}
+                                            onClick={() => {
+
+                                            }}
+                                            onMouseEnter={() => {
+
+                                            }}
+                                            onMouseLeave={() => {
+
+                                            }}
+                                        />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl
+                                    type='password'
+                                    placeholder="Password"
+                                    aria-label="Password"
+                                    aria-describedby="basic-addon1"
+                                    onChange={(event) => {
+                                        formData.rePassData = event.target.value;
+                                    }}
                                 />
                             </InputGroup>
 
@@ -361,14 +379,13 @@ export default function Menu(props){
                                 style={{display: 'flex', width: '97%', justifyContent: 'center', alignItems: 'center'}}
                                 onClick={() => {
                                     return signUp({
-                                            name: 'test',
-                                            email: 'test@gmail.com',
-                                            password: 'TestTest'
+                                            name: formData.emailData,
+                                            email: formData.emailData,
+                                            password: formData.passwordData
                                         }).then((user) => {
                                             signIn({
-                                      
-                                        email: 'test@gmail.com',
-                                        password: 'TestTest'
+                                        email: formData.emailData,
+                                        password: formData.passwordData
                                     }).then((user) => {
                                         console.log(user);
                                         setAnim(menuOutAnim);

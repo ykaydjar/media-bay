@@ -77,12 +77,13 @@ export default class Films extends Component{
 
 }
 
-export async function getServerSideProps(){
-    let mediaItems = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
+export async function getServerSideProps(context){
+    const res = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
+    const data = await res.json();
 
     return {
         props: {
-            mediaItems: mediaItems,
+            mediaItems: data,
         }
     }
 }

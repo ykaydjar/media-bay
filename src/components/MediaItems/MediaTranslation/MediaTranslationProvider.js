@@ -59,8 +59,32 @@ export default class MediaTranslationProvider extends Component{
 
     render(){
         return(
-            <div style={{display: 'flex',  marginTop: 10}}>
-                {this.handleTranslationsDisplay()}
+            <div style={{display: 'flex', flexDirection: 'column',  marginTop: 10, paddingLeft: 10, marginBottom: 10}}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
+                    <i
+                        className='ci-list_minus'
+                        style={{color: 'black', fontSize: '1.2em', fontWeight: 'bold', marginRight: 5}}
+                        onClick={() => {
+
+                        }}
+                    />
+                    <span style={{fontWeight: 'bold', fontSize: '1em', color: 'black'}}>Select Translation</span>
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            width: 2,
+                            height: '100%',
+                            backgroundColor: 'black',
+                            //boxShadow: '5px 5px 5px gray',
+                            borderRadius: 10,
+                        }}
+                    />
+                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                        {this.handleTranslationsDisplay()}
+                    </div>
+                </div>
             </div>
         )
     }

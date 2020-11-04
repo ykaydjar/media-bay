@@ -17,9 +17,18 @@ export default class VideoPlayerUI extends Component{
     constructor(props) {
         super(props);
 
+        this.uiTimeout = null;
+
         this.state = {
 
         }
+    }
+
+    componentDidMount() {
+        console.log('UI CDM');
+        this.uiTimeout = setTimeout(() => {
+            this.props.callback('ui.hide');
+        }, 5000);
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -33,7 +42,13 @@ export default class VideoPlayerUI extends Component{
     render() {
         return(
             <div
-                style={{position: 'absolute', display: this.props.playerData.uiShown?'flex':'none', padding: 10, flexDirection: 'column', width: this.props.playerDimensions.width, height: this.props.playerDimensions.height}}
+                style={{display: 'flex', position: 'absolute', top: 0, left: 0, padding: 10, flexDirection: 'column', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+                onMouseOver={() => {
+                    clearTimeout(this.uiTimeout);
+                    this.uiTimeout = setTimeout(() => {
+                        this.props.callback('ui.hide');
+                    }, 5000);
+                }}
             >
                 <div style={{display: 'flex', flex: 1, width: '100%', alignItems: 'flex-start', flexDirection: 'column'}}>
                     <span style={{color: 'red', fontWeight: 'bold', fontSize: '1em'}}>{this.props.itemData.description.name}</span>
@@ -54,6 +69,11 @@ export default class VideoPlayerUI extends Component{
                             onClick={() => {
                                 this.props.callback('ui.update_player_state', {isLoading: true});
                                 this.props.callback('ui.load_media_files');
+
+                                clearTimeout(this.uiTimeout);
+                                this.uiTimeout = setTimeout(() => {
+                                    this.props.callback('ui.hide');
+                                }, 5000);
                             }}
                         />
                     }
@@ -76,6 +96,10 @@ export default class VideoPlayerUI extends Component{
                             style={{color: 'red', fontSize: '2em', margin: 50, cursor: 'pointer'}}
                             onClick={() => {
                                 this.props.callback('ui.update_player_state', {isPlaying: !this.props.playerData.isPlaying});
+                                clearTimeout(this.uiTimeout);
+                                this.uiTimeout = setTimeout(() => {
+                                    this.props.callback('ui.hide');
+                                }, 5000);
                             }}
                         />
                     }
@@ -101,8 +125,16 @@ export default class VideoPlayerUI extends Component{
                         style={{color: 'red', fontSize: '1em', margin: 10, cursor: 'pointer'}}
                         onClick={() => {
                             if(this.props.playerData.inFullscreen){
+                                clearTimeout(this.uiTimeout);
+                                this.uiTimeout = setTimeout(() => {
+                                    this.props.callback('ui.hide');
+                                }, 5000);
                                 return this.props.callback('ui.fullscreen_exit');
                             }else{
+                                clearTimeout(this.uiTimeout);
+                                this.uiTimeout = setTimeout(() => {
+                                    this.props.callback('ui.hide');
+                                }, 5000);
                                 return this.props.callback('ui.fullscreen_enter');
                             }
                         }}

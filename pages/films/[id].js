@@ -14,10 +14,10 @@ import Layout from "../../src/components/layout";
 
 import useSWR from 'swr';
 
-import VideoPlayer from "../../src/components/Player/VideoPlayer";
 
 import MediaTranslationProvider from '../../src/components/MediaItems/MediaTranslation/MediaTranslationProvider';
 import VideoPlayerProvider from "../../src/components/Player/VideoPlayerProvider";
+import MediaImage from "../../src/components/MediaPageComponents/MediaImage";
 
 
 
@@ -82,9 +82,10 @@ export default class MediaItem extends Component{
 
     render() {
         return(
-            <Layout style={{display: 'flex', flexDirection: 'column'}} main={false}>
-                <div style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', marginTop: 80}}>
-                    <div style={{display: 'flex', flexDirection: 'column', width: '50%', height: 'auto', minWidth: 360, justifyContent: 'center', alignItems: 'center'}}>
+            <Layout style={{display: 'flex', flexDirection: 'column', flex: 1}} main={false}>
+                <div style={{display: 'flex', flexDirection: 'row-reverse', flex: 1, height: 'auto', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', marginTop: 80, marginBottom: 20}}>
+                    <MediaImage url={this.state.itemData.url} posterDefault={this.state.itemData.poster}/>
+                    <div style={{display: 'flex', flexDirection: 'column', flex: 1, height: '25em', minWidth: 360, justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{display: 'flex', flexDirection: 'column', width: '50%', height: 'auto', justifyContent: 'center', alignItems: 'center'}}>
                             <h1 style={{color: 'black', fontSize: '1.5em', fontWeight: 'bold', textAlign: 'center', textShadow: '5px 5px 5px gray'}}>{this.state.itemData.description?this.state.itemData.description.name:null}</h1>
                             <span style={{color: 'black', fontSize: '1em', fontWeight: 'bold', textAlign: 'center'}}>{this.state.itemData.description?this.state.itemData.description.nameOriginal:null}</span>
@@ -92,18 +93,48 @@ export default class MediaItem extends Component{
                         </div>
                         <span style={{color: 'black', marginTop: 20, fontSize: '.9em', fontWeight: 'bold', textAlign: 'center'}}>{this.state.itemData.description?this.state.itemData.description.about:null}</span>
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'row', marginLeft: 10, marginTop: 20, width: 'auto', height: 'auto', justifyContent: 'flex-end', alignItems: 'center'}}>
-                        <img src={this.state.itemData.poster} style={{width: '25em', height: '35em', borderRadius: 10, filter: 'blur(.5px)', boxShadow: '0px 0px 10px 5px gray'}}/>
-                    </div>
                 </div>
 
-                <div style={{display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', minWidth: 360, flexWrap: 'wrap', marginTop: 20, marginBottom: 20}}>
-                    <div style={{display: 'flex', flexGrow: 1, minWidth: '60%', height: '100%', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-                        <VideoPlayerProvider itemData={this.state.itemData} selectedTranslation={this.state.selectedTranslation} callback={this.playerCallback}/>
+                <div
+                    style={{
+                        display: 'flex',
+                        flex: 1,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'flex-start',
+                        flexWrap: 'wrap',
+                        marginTop: 20,
+                        marginBottom: 20
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            flex: 1.3,
+                            height: '30em',
+                            minWidth: 360,
+                            justifyContent: 'center',
+                            alignItems: 'flex-start',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <div style={{
+                            display: 'flex',
+                            flexGrow: 1,
+                            width: '98%',
+                            height: '95%',
+                            borderTopRightRadius: 10,
+                            borderBottomRightRadius: 10,
+                            boxShadow: '0px 0px 5px gray inset',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center',
+                        }}>
+                            <VideoPlayerProvider itemData={this.state.itemData} selectedTranslation={this.state.selectedTranslation} callback={this.playerCallback}/>
+                        </div>
                         <MediaTranslationProvider callback={this.mediaTranslationsProviderCallback} data={this.state.itemData} selectedTranslation={this.state.selectedTranslation} />
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '40%', height: '100%', minWidth: 360, justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
+                    <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', flex: .7, height: '30em', minWidth: 360, justifyContent: 'center', alignItems: 'flex-start'}}>
+                        <div style={{display: 'flex', width: '80%', height: '10em',  borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
                         <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
                         <div style={{display: 'flex', width: '80%', height: '10em', borderRadius: 10, boxShadow: '0px 0px 2px 0px black inset', margin: 5}}/>
                     </div>

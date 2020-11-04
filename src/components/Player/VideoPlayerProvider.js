@@ -13,8 +13,9 @@ import Spinner from "react-bootstrap/Spinner";
 
 import useSWR from 'swr';
 
-import VideoPlayer from "./VideoPlayer";
-import VideoPlayerUI from "./VideoPlayerUI";
+import VideoPlayerLayout from "./VideoPlayerLayout";
+
+
 
 
 export default class VideoPlayerProvider extends Component{
@@ -51,7 +52,7 @@ export default class VideoPlayerProvider extends Component{
         }
     }
 
-    handlePlayerActions = (action, data) => {
+    handlePlayerLayoutActions = (action, data) => {
         if(action === 'ui.show'){
             let newPlayerData = {
                 ...this.state.playerData,
@@ -76,14 +77,6 @@ export default class VideoPlayerProvider extends Component{
             this.setState({
                 playerData: newPlayerData
             })
-        }else if(action === 'player.update_player_dimensions'){
-            let newPlayerDimensions = {
-                ...this.state.playerDimensions,
-                ...data
-            };
-            this.setState({
-                playerDimensions: newPlayerDimensions
-            })
         }else if(action === 'player.update_progress'){
             let newPlayerData = {
                 ...this.state.playerData,
@@ -92,11 +85,7 @@ export default class VideoPlayerProvider extends Component{
             this.setState({
                 playerData: newPlayerData
             })
-        }
-    }
-
-    handlePlayerUICallback = (action, data) => {
-        if(action === 'ui.update_player_state'){
+        }else if(action === 'ui.update_player_state'){
             let newPlayerData = {
                 ...this.state.playerData,
                 ...data
@@ -112,7 +101,6 @@ export default class VideoPlayerProvider extends Component{
             this.setState({
                 playerData: newPlayerData
             })
-            //playerFullscreen.exit();
         }else if(action === 'ui.fullscreen_enter'){
             let newPlayerData = {
                 ...this.state.playerData,
@@ -120,9 +108,7 @@ export default class VideoPlayerProvider extends Component{
             };
             this.setState({
                 playerData: newPlayerData
-            })
-
-            //playerFullscreen.enter();
+            });
         }else if(action === 'ui.load_media_files'){
             let newPlayerData = {
                 ...this.state.playerData,
@@ -136,12 +122,20 @@ export default class VideoPlayerProvider extends Component{
         }
     }
 
+
     render() {
         return(
-            <div style={{display: 'flex', width: this.state.playerDimensions.width, height: this.state.playerDimensions.height}}>
-                <VideoPlayer itemData={this.state.itemData} playerData={this.state.playerData} playerDimensions={this.state.playerDimensions} callback={this.handlePlayerActions}/>
-
-                <VideoPlayerUI playerData={this.state.playerData} itemData={this.state.itemData} playerDimensions={this.state.playerDimensions} callback={this.handlePlayerUICallback}/>
+            <div
+                style={{
+                    width: '98%',
+                    height: '95%',
+                    //backgroundColor: 'black',
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 10,
+                    overflow: 'hidden'
+                }}
+            >
+                <VideoPlayerLayout itemData={this.state.itemData} playerData={this.state.playerData} callback={this.handlePlayerLayoutActions}/>
             </div>
         )
     }

@@ -51,25 +51,10 @@ export default class Films extends Component{
                     <link rel='icon' href='/hdrezka_logo.png'/>
                 </Head>
 
-                <div style={{display: 'flex', flexDirection: 'row', width: '100vw', paddingTop: 50}}>
-                    <TweenOne
-                        key='left-block'
-                        style={{display: this.state.menuShown?'none':'flex', zIndex: 0, paddingBottom: 10, transform: 'translateX(-100vw)', boxShadow: this.state.zkBoxShadow, minWidth: 360, opacity: 0, marginLeft: '20vw', width: '80vw',  height: '45vh', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
-                        animation={this.state.currentLeftBlockAnim}
-                        paused={this.state.animPaused}
-                        onMouseEnter={() => {
-
-                        }}
-                        onMouseLeave={() => {
-                            this.setState({
-                                zkBoxShadow: null,
-                            })
-                        }}
-                    >
-                        {this.props.mediaItems?this.props.mediaItems.map((item, index) =>
-                            <MediaFeedItem key={index} data={item} link={`/films/${item.id}`}/>
-                        ):null}
-                    </TweenOne>
+                <div style={{display: this.state.menuShown?'none':'flex', zIndex: 0, flexDirection: 'row', width: '80vw', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', minWidth: 360, marginLeft: '20vw', paddingTop: 50, paddingBottom: 10,}}>
+                    {this.props.mediaItems?this.props.mediaItems.map((item, index) =>
+                        <MediaFeedItem key={index} data={item} link={`/films/${item.id}`}/>
+                    ):null}
                 </div>
             </Layout>
         )
@@ -78,8 +63,7 @@ export default class Films extends Component{
 }
 
 export async function getServerSideProps(context){
-    const res = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
-    const data = await res.json();
+    const data = await getMediaItems('rezka.ag', 'films', '1', 'last', 'max');
 
     return {
         props: {

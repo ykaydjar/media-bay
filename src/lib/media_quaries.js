@@ -89,6 +89,8 @@ export async function getMediaItemsData(currentItem){
     }).then((text) => {
         const $ = cheerio.load(text);
 
+        itemData.poster = $('.b-sidecover').children('a').attr('href');
+
         itemData.description.nameOriginal = $('.b-post__origtitle').text();
         itemData.description.about = $('.b-post__description_text').text();
 

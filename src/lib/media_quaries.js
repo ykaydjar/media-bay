@@ -118,32 +118,30 @@ export async function getMediaItemsData(currentItem){
             }
         }
 
-        if($('.b-post__info').find('.b-post__info_rates')){
-            let ratingsCount = $('.b-post__info').find('.b-post__info_rates').length;
-            itemData.description.ratings = [];
 
-            for(let i=1; i<=ratingsCount; i++){
-                let ratingObject = {
-                    ratingUrl: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('a').attr('href'),
-                    ratingName: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('a').text(),
-                    ratingValue: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('span').text(),
-                    ratingVoters: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('i').text(),
-                }
+        let ratingsCount = $('.b-post__info').find('.b-post__info_rates').length;
+        itemData.description.ratings = [];
 
-                //rating name not always displayed because in some items rating has no url(RoboCop). Check if rating name is not empty and if it is - get name from class or from first child of parent component.
-
-                itemData.description.ratings.push(ratingObject);
+        for(let i=1; i<=ratingsCount; i++){
+            let ratingObject = {
+                ratingUrl: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('a').attr('href'),
+                ratingName: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('a').text(),
+                ratingValue: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('span').text(),
+                ratingVoters: $('.b-post__info').find('.b-post__info_rates:nth-child('+ i +')').children('i').text(),
             }
 
-            let hdrezkaRating = {
-                ratingName: 'hdrezka',
-                ratingValue: $(`#rating-layer-num-${itemData.id}`).text(),
-                ratingVoters: $('.b-post__rating').children('.votes').children('span').text(),
-            };
-            console.log('HDREZKA Ratings: ' + JSON.stringify(hdrezkaRating));
-            itemData.description.ratings.push(hdrezkaRating);
+            //rating name not always displayed because in some items rating has no url(RoboCop). Check if rating name is not empty and if it is - get name from class or from first child of parent component.
+
+            itemData.description.ratings.push(ratingObject);
         }
 
+        let hdrezkaRating = {
+            ratingName: 'hdrezka',
+            ratingValue: $(`#rating-layer-num-${itemData.id}`).text(),
+            ratingVoters: $('.b-post__rating').children('.votes').children('span').text(),
+        };
+        console.log('HDREZKA Ratings: ' + JSON.stringify(hdrezkaRating));
+        itemData.description.ratings.push(hdrezkaRating);
 
         let isSeries = $('#simple-episodes-tabs').children('ul').length;
         console.log('IS SERIES: ' + isSeries);
